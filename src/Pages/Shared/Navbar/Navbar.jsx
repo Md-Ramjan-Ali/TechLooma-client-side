@@ -1,5 +1,5 @@
 import React from "react";
-import {  NavLink } from "react-router";
+import {  Link, NavLink } from "react-router";
 // import { Tooltip } from "react-tooltip";
 import Swal from "sweetalert2";
 import { RiArrowDropDownLine } from "react-icons/ri";
@@ -102,7 +102,10 @@ const Navbar = () => {
             </Link>
           </>
         )} */}
-        <button className="btn">Login</button>
+        <Link to='/auth/login'>
+          {" "}
+          <button className="btn">Login</button>
+        </Link>
       </div>
       {/* <Tooltip id="my-tooltip" /> */}
     </nav>

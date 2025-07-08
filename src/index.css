@@ -1,3 +1,7 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
 @import "tailwindcss";
 @plugin "daisyui";
 @plugin "daisyui/theme" {
@@ -6,6 +10,7 @@
   --color-primary: #f59e0b;
   --color-secondary: #029891;
 }
+
 
 
 nav .active{
