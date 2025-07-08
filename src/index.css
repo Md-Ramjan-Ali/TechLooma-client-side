@@ -6,3 +6,8 @@
   --color-primary: #f59e0b;
   --color-secondary: #029891;
 }
+
+
+nav .active{
+  border-bottom: 2px solid green;
+}
