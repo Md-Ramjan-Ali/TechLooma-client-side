@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { FaUser, FaEnvelope, FaImage } from "react-icons/fa";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import TechLoomaLogo from "../../../Components/TechLoomaLogo/TechLoomaLogo";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -14,6 +14,9 @@ const Register = () => {
   const [profilePic, setProfilePic] = useState("");
   const { createUser, updateUser, setUser } = useAuth();
   const navigate = useNavigate();
+  const location=useLocation()
+
+    const from = location.state?.from || "/";
 
   const {
     register,
@@ -42,7 +45,7 @@ const Register = () => {
           .then(() => {
             setUser({ ...user, updatePro});
             setTimeout(() => {
-              navigate("/");
+              navigate(from);
             }, 1500);
           })
           .catch((error) => {

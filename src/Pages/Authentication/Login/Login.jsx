@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
 import TechLoomaLogo from "../../../Components/TechLoomaLogo/TechLoomaLogo";
@@ -13,6 +13,9 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { signInUser,setUser } = useAuth();
   const navigate=useNavigate()
+  const location=useLocation()
+
+  const from = location.state?.from || "/";
 
   const {register,handleSubmit,formState:{errors}}=useForm()
   const onSubmit=(data)=>{
@@ -27,7 +30,7 @@ const Login = () => {
           });
           setUser(user)
           setTimeout(() => {
-            navigate('/')
+            navigate(from)
           }, 1500);
     }).catch(error=>{
       console.log(error);
@@ -111,7 +114,7 @@ const Login = () => {
             {/* Sign Up */}
             <p className="text-sm text-primary-content text-center">
               Don't have an account?{" "}
-              <Link
+              <Link state={{from}}
                 to="/auth/register"
                 className="text-primary hover:underline"
               >
