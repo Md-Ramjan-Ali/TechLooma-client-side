@@ -34,10 +34,10 @@ const Navbar = () => {
     </>
   );
   return (
-    <nav className="navbar backdrop-blur-sm  shadow-sm px-10 sticky top-0 z-100 ">
+    <nav className="navbar backdrop-blur-sm bg-base-content/90  shadow-sm px-10 sticky top-0 z-100 ">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="lg:hidden">
+          <div tabIndex={0} role="button" className="lg:hidden text-secondary-content">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -54,7 +54,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content rounded-box z-1 mt-3 p-2 shadow bg-base-content text-secondary-content w-fit"
           >
             {links}
           </ul>
@@ -62,7 +62,7 @@ const Navbar = () => {
         <TechLoomaLogo></TechLoomaLogo>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="flex gap-8 ">{links}</ul>
+        <ul className="flex gap-8 text-secondary-content">{links}</ul>
       </div>
       <div className="navbar-end gap-5">
         {/* <div className="flex items-center">
@@ -102,9 +102,11 @@ const Navbar = () => {
             </Link>
           </>
         )} */}
-        <Link to='/auth/login'>
+        <Link to="/auth/login">
           {" "}
-          <button className="btn">Login</button>
+          <button className="btn bg-transparent text-secondary-content border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-tl-2xl rounded-br-2xl">
+            Login
+          </button>
         </Link>
       </div>
       {/* <Tooltip id="my-tooltip" /> */}

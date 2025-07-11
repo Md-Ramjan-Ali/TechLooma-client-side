@@ -10,17 +10,16 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router";
 import TechLoomaLogo from "../../../Components/TechLoomaLogo/TechLoomaLogo";
-// import FooterLogo from "../../../assets/volunteer-logo.png";
 
 const Footer = () => {
   return (
     <div>
-      <footer className="bg-[#1f2937] text-white pt-10">
+      <footer className="bg-base-content/95 text-white pt-10">
         <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-5 lg:px-0">
           {/* Left: Text and Image */}
           <div>
             <div className="text-center md:text-left space-y-6 mb-10">
-            <TechLoomaLogo></TechLoomaLogo>
+              <TechLoomaLogo></TechLoomaLogo>
               <p className="mt-2 text-gray-300 max-w-sm">
                 A volunteer management system is a platform that helps
                 organizations recruit, schedule, and track volunteers
