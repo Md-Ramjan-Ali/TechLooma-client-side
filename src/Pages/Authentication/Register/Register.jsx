@@ -57,7 +57,7 @@ const Register = () => {
             setUser({ ...user, updatePro });
             setTimeout(() => {
               navigate(from);
-            }, 1500);
+            }, 1000);
           })
           .catch((error) => {
             console.log(error);

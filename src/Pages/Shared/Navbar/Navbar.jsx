@@ -83,7 +83,7 @@ const Navbar = () => {
               />
               <ReactTooltip
                 id="user-tooltip"
-                place="bottom"
+                place="left"
                 style={{
                   backgroundColor: "#1f1f1f",
                   color: "#22d3ee",
