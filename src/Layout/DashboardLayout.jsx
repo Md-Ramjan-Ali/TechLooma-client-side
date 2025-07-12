@@ -1,9 +1,83 @@
 import React from 'react';
+import { NavLink, Outlet } from 'react-router';
+import TechLoomaLogo from '../Components/TechLoomaLogo/TechLoomaLogo';
+import { FaHome, FaPlus, FaThList, FaUser } from 'react-icons/fa';
 
 const DashboardLayout = () => {
   return (
-    <div>
-      <h1>this is dashboard</h1>
+    <div className="drawer lg:drawer-open">
+      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content flex flex-col bg-base-content">
+        {/* Navbar */}
+        <div className="navbar w-full lg:hidden bg-base-content">
+          <div className="flex-none ">
+            <label
+              htmlFor="my-drawer-2"
+              aria-label="open sidebar"
+              className="btn btn-square btn-ghost"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                className="inline-block h-6 w-6 stroke-current text-secondary-content"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </label>
+          </div>
+          <div className="mx-2 flex-1 px-2 lg:hidden text-secondary-content">
+            Dashboard
+          </div>
+        </div>
+        {/* Page content here */}
+        <div className="bg-base-content text-secondary-content min-h-screen">
+          <Outlet></Outlet>
+        </div>
+        {/* Page content here */}
+      </div>
+      <div className="drawer-side bg-base-content/90">
+        <label
+          htmlFor="my-drawer-2"
+          aria-label="close sidebar"
+          className="drawer-overlay"
+        ></label>
+        <ul className="menu  text-secondary-content  min-h-full w-fit lg:w-72 p-4">
+          {/* Sidebar content here */}
+          <TechLoomaLogo></TechLoomaLogo>
+          <li>
+            <NavLink to="/dashboard">
+              <FaHome className="inline-block mr-2" />
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/my-profile">
+              <FaUser className="inline-block mr-2" />
+              My Profile
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/dashboard/add-product">
+              <FaPlus className="inline-block mr-2" />
+              Add Product
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/dashboard/my-products">
+              <FaThList className="inline-block mr-2" />
+              My Products
+            </NavLink>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

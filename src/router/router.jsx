@@ -7,6 +7,9 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import AuthLayout from "../Layout/AuthLayout";
 import Login from "../Pages/Authentication/Login/Login";
 import Register from "../Pages/Authentication/Register/Register";
+import MyProfile from "../Pages/Dashboard/MyProfile";
+import AddProduct from "../Pages/Dashboard/AddProduct";
+import MyProducts from "../Pages/Dashboard/MyProducts";
 
 export const router = createBrowserRouter([
   {
@@ -26,25 +29,34 @@ export const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashboardLayout></DashboardLayout>,
-    // children:[
-    //   {
-
-    //   }
-    // ]
+    children: [
+      {
+        path: "my-profile",
+        Component: MyProfile,
+      },
+      {
+        path: "add-product",
+        Component: AddProduct,
+      },
+      {
+        path: "my-products",
+        Component: MyProducts
+      },
+    ],
   },
   {
-    path:'/auth',
+    path: "/auth",
     Component: AuthLayout,
-    children:[
+    children: [
       {
-        path:'login',
-        Component: Login
+        path: "login",
+        Component: Login,
       },
       {
-        path: 'register',
+        path: "register",
         Component: Register,
       },
-    ]
+    ],
   },
   {
     path: "/*",
