@@ -3,17 +3,19 @@ import { GrGooglePlus } from "react-icons/gr";
 import useAuth from "../../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import useSaveUser from "../../../Utility/useSaveUser";
 
 const SocialLogIn = () => {
   const { signInGoogle, setUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const saveUser=useSaveUser()
 
   const from = location.state?.from || "/";
 
   const handleGoogleSignIn = () => {
     signInGoogle()
-      .then((result) => {
+      .then(async(result) => {
         const googleUser = result.user;
         Swal.fire({
           icon: "success",
@@ -21,6 +23,7 @@ const SocialLogIn = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        await saveUser(googleUser)
         setUser(googleUser);
         setTimeout(() => {
           navigate(from);

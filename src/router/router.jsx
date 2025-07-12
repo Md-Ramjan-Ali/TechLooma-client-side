@@ -10,6 +10,7 @@ import Register from "../Pages/Authentication/Register/Register";
 import MyProfile from "../Pages/Dashboard/MyProfile";
 import AddProduct from "../Pages/Dashboard/AddProduct";
 import MyProducts from "../Pages/Dashboard/MyProducts";
+import UpdateProduct from "../Pages/Dashboard/UpdateProduct";
 
 export const router = createBrowserRouter([
   {
@@ -40,7 +41,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "my-products",
-        Component: MyProducts
+        Component: MyProducts,
+      },
+      {
+        path: "update-product/:id",
+        Component: UpdateProduct
       },
     ],
   },

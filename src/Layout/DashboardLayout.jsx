@@ -2,8 +2,10 @@ import React from 'react';
 import { NavLink, Outlet } from 'react-router';
 import TechLoomaLogo from '../Components/TechLoomaLogo/TechLoomaLogo';
 import { FaHome, FaPlus, FaThList, FaUser } from 'react-icons/fa';
+import useUserRole from '../hooks/useUserRole';
 
 const DashboardLayout = () => {
+  const { role, isLoading } = useUserRole();
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -50,32 +52,61 @@ const DashboardLayout = () => {
         <ul className="menu  text-secondary-content  min-h-full w-fit lg:w-72 p-4">
           {/* Sidebar content here */}
           <TechLoomaLogo></TechLoomaLogo>
-          <li>
-            <NavLink to="/dashboard">
-              <FaHome className="inline-block mr-2" />
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/my-profile">
-              <FaUser className="inline-block mr-2" />
-              My Profile
-            </NavLink>
-          </li>
 
-          <li>
-            <NavLink to="/dashboard/add-product">
-              <FaPlus className="inline-block mr-2" />
-              Add Product
-            </NavLink>
-          </li>
+          {/* admin dashboard */}
+          {!isLoading && role === "admin" && (
+            <>
+              <li>
+                <NavLink to="/dashboard">
+                  <FaHome className="inline-block mr-2" />
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/all-users">All Users</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/reported-products">
+                  Reported Products
+                </NavLink>
+              </li>
+            </>
+          )}
 
-          <li>
-            <NavLink to="/dashboard/my-products">
-              <FaThList className="inline-block mr-2" />
-              My Products
-            </NavLink>
-          </li>
+          {/* moderator dashboard */}
+          {!isLoading && role === "moderator" && (
+            <>
+              <li>
+                <NavLink to="/dashboard/moderate">Moderation Queue</NavLink>
+              </li>
+            </>
+          )}
+
+          {/* user dashboard */}
+          {!isLoading && role === "user" && (
+            <>
+              <li>
+                <NavLink to="/dashboard/my-profile">
+                  <FaUser className="inline-block mr-2" />
+                  My Profile
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/dashboard/add-product">
+                  <FaPlus className="inline-block mr-2" />
+                  Add Product
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/dashboard/my-products">
+                  <FaThList className="inline-block mr-2" />
+                  My Products
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </div>

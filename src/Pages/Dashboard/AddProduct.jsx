@@ -6,13 +6,15 @@ import { WithContext as ReactTags } from "react-tag-input";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import { FaImage } from "react-icons/fa";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const AddProduct = () => {
   const { user } = useAuth();
+  const axiosSecure=useAxiosSecure()
+  const [productPic, setProductPic] = useState("");
   const { register, handleSubmit, reset } = useForm();
   const [tags, setTags] = useState([]);
   const [loading, setLoading] = useState(false);
-  const imgbbAPI = import.meta.env.VITE_IMGBB_API;
 
   const handleAddition = (tag) => setTags([...tags, tag]);
   const handleDelete = (i) => setTags(tags.filter((_, index) => index !== i));
@@ -20,19 +22,11 @@ const AddProduct = () => {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      // Upload to imgbb
-      const formData = new FormData();
-      formData.append("image", data.image[0]);
-      const imgRes = await axios.post(
-        `https://api.imgbb.com/1/upload?key=${imgbbAPI}`,
-        formData
-      );
-      const imageUrl = imgRes.data.data.url;
 
-      // Prepare payload
+      // Prepare product data
       const productData = {
         name: data.name,
-        image: imageUrl,
+        productImage: productPic,
         description: data.description,
         tags: tags.map((t) => t.text),
         externalLink: data.externalLink,
@@ -42,17 +36,15 @@ const AddProduct = () => {
         vote: 0,
         isFeatured: false,
         status: "pending",
-        timestamp: new Date(),
+        create_At: new Date(),
       };
 
-      const res = await axios.post(
-        "https://your-server-domain.com/products",
-        productData
-      );
+      const res = await axiosSecure.post("products", productData);
+      console.log(res.data);
 
       if (res.data.insertedId) {
         Swal.fire("Success", "Product added successfully!", "success");
-        reset();
+        // reset();
         setTags([]);
       }
     } catch (err) {
@@ -63,12 +55,27 @@ const AddProduct = () => {
     }
   };
 
+  const handleImageUpload = async (e) => {
+    const image = e.target.files[0];
+    console.log(image);
+
+    const formData = new FormData();
+    formData.append("image", image);
+
+    const imagUploadUrl = `https://api.imgbb.com/1/upload?key=${
+      import.meta.env.VITE_image_upload_key
+    }`;
+
+    const res = await axios.post(imagUploadUrl, formData);
+    setProductPic(res.data.data.url);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="max-w-5xl mx-auto p-6 sm:p-8 md:p-10 backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl mt-10"
+      className="max-w-5xl mx-auto p-6 sm:p-8 md:p-10 backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl my-5"
     >
       <h2 className="text-2xl lg:text-3xl font-bold text-center text-cyan-400 mb-8">
         Add Tech Product
@@ -96,6 +103,7 @@ const AddProduct = () => {
           <div className="flex items-center border-b border-primary-content px-2 py-2 group-focus-within:border-primary transition-all duration-300">
             <input
               type="file"
+              onChange={handleImageUpload}
               accept="image/*"
               className="w-full text-primary-content file:mr-4 file:py-1 file:px-3 
                          file:rounded-full file:border-0 file:text-sm 
@@ -152,9 +160,9 @@ const AddProduct = () => {
         </div>
 
         {/* Owner Info */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label className="block font-medium mb-1">User Name</label>
+            <label className="block font-medium mb-1">Owner Name</label>
             <input
               value={user?.displayName || ""}
               readOnly
@@ -162,7 +170,7 @@ const AddProduct = () => {
             />
           </div>
           <div>
-            <label className="block font-medium mb-1">User Email</label>
+            <label className="block font-medium mb-1">Owner Email</label>
             <input
               value={user?.email || ""}
               readOnly
@@ -170,7 +178,7 @@ const AddProduct = () => {
             />
           </div>
           <div>
-            <label className="block font-medium mb-1">User Image URL</label>
+            <label className="block font-medium mb-1">Owner Image</label>
             <input
               value={user?.photoURL || ""}
               readOnly

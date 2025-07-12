@@ -8,15 +8,17 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useSaveUser from "../../../Utility/useSaveUser";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [profilePic, setProfilePic] = useState("");
   const { createUser, updateUser, setUser } = useAuth();
   const navigate = useNavigate();
-  const location=useLocation()
+  const location = useLocation();
+  const saveUser = useSaveUser();
 
-    const from = location.state?.from || "/";
+  const from = location.state?.from || "/";
 
   const {
     register,
@@ -28,22 +30,31 @@ const Register = () => {
     console.log("Register Data:", data);
 
     createUser(data.email, data.password)
-      .then((result) => {
+      .then(async (result) => {
         console.log(result.user);
         const user = result.user;
-            Swal.fire({
-              icon: "success",
-              title: "Register Successfully!",
-              showConfirmButton: false,
-              timer: 1500,
-            });
+        Swal.fire({
+          icon: "success",
+          title: "Register Successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        // save userInfo in database
+        await saveUser({
+          ...user,
+          displayName: data.name,
+          photoURL: profilePic,
+        });
+
+        // update user info
         const updatePro = {
           displayName: data.name,
-          photoURL: profilePic
+          photoURL: profilePic,
         };
         updateUser(updatePro)
           .then(() => {
-            setUser({ ...user, updatePro});
+            setUser({ ...user, updatePro });
             setTimeout(() => {
               navigate(from);
             }, 1500);
