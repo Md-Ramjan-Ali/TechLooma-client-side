@@ -1,24 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import {  Link, NavLink } from "react-router";
-// import { Tooltip } from "react-tooltip";
 import Swal from "sweetalert2";
-import { RiArrowDropDownLine } from "react-icons/ri";
 import TechLoomaLogo from "../../../Components/TechLoomaLogo/TechLoomaLogo";
-// import DarkToggler from "../../../Components/DarkToggler/DarkToggler";
+import useAuth from "../../../hooks/useAuth";
+import { Tooltip as ReactTooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
+import { motion } from "framer-motion";
+import defaultLogo from '../../../assets/profileLogo.png'
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
 
-  // const handleLogOut = () => {
-  //   logOUt();
+  const handleLogOut = () => {
+    logOut();
 
-  //   Swal.fire({
-  //     icon: "success",
-  //     title: "LogOut Successfully",
-  //     showConfirmButton: false,
-  //     timer: 1500,
-  //   });
-  // };
+    Swal.fire({
+      icon: "success",
+      title: "LogOut Successfully",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
 
   const links = (
     <>
@@ -28,16 +32,17 @@ const Navbar = () => {
       <li>
         <NavLink to="/products">Products</NavLink>
       </li>
-      <li>
-        <NavLink to="/dashboard">Dashboard</NavLink>
-      </li>
     </>
   );
   return (
     <nav className="navbar backdrop-blur-sm bg-base-content/90  shadow-sm px-10 sticky top-0 z-100 ">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="lg:hidden text-secondary-content">
+          <div
+            tabIndex={0}
+            role="button"
+            className="lg:hidden text-secondary-content"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -65,51 +70,62 @@ const Navbar = () => {
         <ul className="flex gap-8 text-secondary-content">{links}</ul>
       </div>
       <div className="navbar-end gap-5">
-        {/* <div className="flex items-center">
-          <DarkToggler></DarkToggler>
-        </div> */}
-
-        {/* <div
-          className="cursor-pointer "
-          data-tooltip-id="my-tooltip"
-          data-tooltip-place="left"
-          data-tooltip-content={user?.displayName}
-        >
+        <div className="relative">
           {user ? (
-            <img
-              className="rounded-full max-w-10 max-h-10  w-full h-full card shadow-sm"
-              src={`${user ? user?.photoURL : ""}`}
-              alt=""
-            />
-          ) : (
-            ""
-          )}
-        </div> */}
+            <>
+              <img
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                src={user?.photoURL || defaultLogo}
+                alt="Profile"
+                data-tooltip-id="user-tooltip"
+                data-tooltip-content={user.displayName}
+                className="w-10 h-10 rounded-full border-2 border-[#22d3ee] cursor-pointer"
+              />
+              <ReactTooltip
+                id="user-tooltip"
+                place="bottom"
+                style={{
+                  backgroundColor: "#1f1f1f",
+                  color: "#22d3ee",
+                  fontWeight: "500",
+                }}
+              />
 
-        {/* {user ? (
-          <button
-            onClick={handleLogOut}
-            className="btn bg-secondary border-2 dark:border-secondary hover:bg-secondary dark:bg-transparent text-white"
-          >
-            LogOut
-          </button>
-        ) : (
-          <>
-            <Link to="/auth/login">
-              <button className="btn bg-primary hover:bg-secondary text-white">
-                Login
-              </button>
-            </Link>
-          </>
-        )} */}
-        <Link to="/auth/login">
-          {" "}
-          <button className="btn bg-transparent text-secondary-content border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-tl-2xl rounded-br-2xl">
-            Login
-          </button>
-        </Link>
+              {isDropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute right-0 mt-2 w-44 bg-[#1a1a1a] rounded-lg border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)]  z-50"
+                >
+                  <Link
+                    to="/dashboard"
+                    className="block px-4 py-2 border-b-1 border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)]  text-secondary-content transition"
+                    onClick={() => setIsDropdownOpen(false)}
+                  >
+                    Dashboard
+                  </Link>
+                  <button
+                    onClick={handleLogOut}
+                    className="w-full text-left px-4 py-2 hover:bg-red-500/20 text-red-400 transition"
+                  >
+                    Logout
+                  </button>
+                </motion.div>
+              )}
+            </>
+          ) : (
+            // Not logged in: Show Login / Register
+            <div className="flex gap-4">
+              <Link to="/auth/login">
+                <button className="btn bg-transparent text-secondary-content border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-tl-2xl rounded-br-2xl">
+                  Login
+                </button>
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
-      {/* <Tooltip id="my-tooltip" /> */}
     </nav>
   );
 };

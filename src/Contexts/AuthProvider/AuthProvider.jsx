@@ -40,7 +40,7 @@ const AuthProvider = ({ children }) => {
   };
 
   //signOut or LogOut
-  const logOUt = () => {
+  const logOut = () => {
     setLoading(true);
     return signOut(auth);
   };
@@ -65,7 +65,7 @@ const AuthProvider = ({ children }) => {
     updateUser,
     signInUser,
     signInGoogle,
-    logOUt,
+    logOut,
   };
   return <AuthContext value={userInfo}>{children}</AuthContext>;
 };
