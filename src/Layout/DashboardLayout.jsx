@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router';
 import TechLoomaLogo from '../Components/TechLoomaLogo/TechLoomaLogo';
-import { FaFlag, FaGavel, FaHome, FaPlus, FaThList, FaUser, FaUsers } from 'react-icons/fa';
+import { FaFlag, FaGavel, FaHome, FaPlus, FaThList, FaTicketAlt, FaUser, FaUsers } from 'react-icons/fa';
 import useUserRole from '../hooks/useUserRole';
 
 const DashboardLayout = () => {
@@ -51,7 +51,9 @@ const DashboardLayout = () => {
         ></label>
         <ul className="menu  text-secondary-content  min-h-full w-72 p-4">
           {/* Sidebar content here */}
-          <TechLoomaLogo></TechLoomaLogo>
+          <div className="border-b-1 py-5 mb-5">
+            <TechLoomaLogo></TechLoomaLogo>
+          </div>
 
           {/* admin dashboard */}
           {!isLoading && role === "admin" && (
@@ -62,25 +64,37 @@ const DashboardLayout = () => {
                   Home
                 </NavLink>
               </li>
-              <NavLink to="/dashboard/all-users">
-                <FaUsers className="inline-block mr-2" />
-                All Users
-              </NavLink>
-
-              <NavLink to="/dashboard/reported-products">
-                <FaFlag className="inline-block mr-2" />
-                Reported Products
-              </NavLink>
+              <li>
+                <NavLink to="/dashboard/all-users">
+                  <FaUsers className="inline-block mr-2" />
+                  All Users
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/manage-coupons">
+                  <FaTicketAlt className="inline-block mr-2" />
+                  Manage Coupons
+                </NavLink>
+              </li>
             </>
           )}
 
           {/* moderator dashboard */}
           {!isLoading && role === "moderator" && (
             <>
-              <NavLink to="/dashboard/moderate">
-                <FaGavel className="inline-block mr-2" />
-                Moderation Queue
-              </NavLink>
+              <li>
+                <NavLink to="/dashboard/moderate">
+                  <FaGavel className="inline-block mr-2" />
+                  Moderation Queue
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/dashboard/reported-products">
+                  <FaFlag className="inline-block mr-2" />
+                  Reported Products
+                </NavLink>
+              </li>
             </>
           )}
 

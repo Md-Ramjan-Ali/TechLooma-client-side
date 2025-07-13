@@ -7,10 +7,13 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import AuthLayout from "../Layout/AuthLayout";
 import Login from "../Pages/Authentication/Login/Login";
 import Register from "../Pages/Authentication/Register/Register";
-import MyProfile from "../Pages/Dashboard/MyProfile";
-import AddProduct from "../Pages/Dashboard/AddProduct";
-import MyProducts from "../Pages/Dashboard/MyProducts";
-import UpdateProduct from "../Pages/Dashboard/UpdateProduct";
+import MyProfile from "../Pages/Dashboard/User/MyProfile";
+import AddProduct from "../Pages/Dashboard/User/AddProduct";
+import AdminRoute from "../routes/AdminRoute";
+import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
+import ManageCoupons from "../Pages/Dashboard/Admin/ManageCoupon";
+import MyProducts from "../Pages/Dashboard/User/MyProducts";
+import UpdateProduct from "../Pages/Dashboard/User/UpdateProduct";
 
 export const router = createBrowserRouter([
   {
@@ -45,7 +48,25 @@ export const router = createBrowserRouter([
       },
       {
         path: "update-product/:id",
-        Component: UpdateProduct
+        Component: UpdateProduct,
+      },
+      // moderator panel routes--------------------------------
+      // admin panel routes------------------------------------
+      {
+        path: "all-users",
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-coupons",
+        element: (
+          <AdminRoute>
+            <ManageCoupons></ManageCoupons>
+          </AdminRoute>
+        ),
       },
     ],
   },

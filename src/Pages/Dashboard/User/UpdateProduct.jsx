@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 import { useParams, useNavigate } from "react-router";
 import { WithContext as ReactTags } from "react-tag-input";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { FaImage } from "react-icons/fa";
-import Loading from "../../Components/Loading/Loading";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Loading from "../../../Components/Loading/Loading";
 
 const UpdateProduct = () => {
   const { id } = useParams();

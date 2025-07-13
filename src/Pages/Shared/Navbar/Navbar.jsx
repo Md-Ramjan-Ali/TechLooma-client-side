@@ -1,26 +1,27 @@
 import React, { useState } from "react";
-import {  Link, NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import Swal from "sweetalert2";
 import TechLoomaLogo from "../../../Components/TechLoomaLogo/TechLoomaLogo";
 import useAuth from "../../../hooks/useAuth";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import { motion } from "framer-motion";
-import defaultLogo from '../../../assets/profileLogo.png'
+import defaultLogo from "../../../assets/profileLogo.png";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-
   const handleLogOut = () => {
-    logOut();
-
-    Swal.fire({
-      icon: "success",
-      title: "LogOut Successfully",
-      showConfirmButton: false,
-      timer: 1500,
+    logOut().then(() => {
+      Swal.fire({
+        icon: "success",
+        title: "Logout Successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }).catch(error=>{
+      console.log(error);
     });
   };
 

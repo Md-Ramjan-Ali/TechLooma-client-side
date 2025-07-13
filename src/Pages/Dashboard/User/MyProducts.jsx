@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import useAuth from "../../hooks/useAuth";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
-import Loading from "../../Components/Loading/Loading";
 import { Link } from "react-router";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Loading from "../../../Components/Loading/Loading";
 
 const MyProducts = () => {
   const { user } = useAuth();

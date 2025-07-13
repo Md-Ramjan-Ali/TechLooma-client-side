@@ -4,13 +4,13 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { WithContext as ReactTags } from "react-tag-input";
 import Swal from "sweetalert2";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "../../../hooks/useAuth";
 import { FaImage } from "react-icons/fa";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AddProduct = () => {
   const { user } = useAuth();
-  const axiosSecure=useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
   const [productPic, setProductPic] = useState("");
   const { register, handleSubmit, reset } = useForm();
   const [tags, setTags] = useState([]);
@@ -22,7 +22,6 @@ const AddProduct = () => {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-
       // Prepare product data
       const productData = {
         name: data.name,
