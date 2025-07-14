@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import { FaImage } from "react-icons/fa";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useUserInfo from "../../../hooks/useUserInfo";
 
 const AddProduct = () => {
   const { user } = useAuth();
@@ -15,6 +16,8 @@ const AddProduct = () => {
   const { register, handleSubmit, reset } = useForm();
   const [tags, setTags] = useState([]);
   const [loading, setLoading] = useState(false);
+    const { userInfo } = useUserInfo();
+    const isSubscribed = userInfo?.isSubscribed;
 
   const handleAddition = (tag) => setTags([...tags, tag]);
   const handleDelete = (i) => setTags(tags.filter((_, index) => index !== i));

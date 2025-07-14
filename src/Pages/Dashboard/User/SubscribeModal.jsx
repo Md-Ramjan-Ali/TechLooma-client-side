@@ -7,18 +7,22 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 const stripePromise = loadStripe(import.meta.env.VITE_payment_key);
 
 const SubscribeModal = ({ setShowModal, user }) => {
-  const axiosSecure=useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
   const [coupon, setCoupon] = useState("");
   const [discount, setDiscount] = useState(0);
   const [couponError, setCouponError] = useState("");
 
-  const originalPrice = 999;
-  const finalPrice = originalPrice - discount;
+  const originalPrice = 999; // $9.99 in cents
+  const finalPrice = originalPrice - discount; 
 
   const handleApplyCoupon = async () => {
     try {
       const res = await axiosSecure.get(`/validate-coupon/${coupon}`);
-      setDiscount(res.data.discount); // e.g., 200 means $2.00
+
+      // ✅ Instead use this:
+      const percentage = parseFloat(res.data.discount); // 0.5 means 50%
+      const calculatedDiscount = Math.round(originalPrice * percentage); // in cents
+      setDiscount(calculatedDiscount);
       setCouponError("");
     } catch (err) {
       setDiscount(0);
@@ -45,7 +49,7 @@ const SubscribeModal = ({ setShowModal, user }) => {
             />
             <button
               onClick={() => {
-                handleApplyCoupon;
+                handleApplyCoupon();
               }}
               className="btn bg-primary text-black hover:bg-secondary"
             >
@@ -67,9 +71,14 @@ const SubscribeModal = ({ setShowModal, user }) => {
             Total:{" "}
             <span className="font-bold text-primary">${finalPrice / 100}</span>
           </p>
-          {discount > 0 && (
+          {/* {discount > 0 && (
             <p className="text-sm text-green-500">
               Coupon Discount: -${discount / 100}
+            </p>
+          )} */}
+          {discount > 0 && (
+            <p className="text-sm text-green-500">
+              Coupon Discount: -{Math.round((discount / originalPrice) * 100)}%
             </p>
           )}
         </div>
