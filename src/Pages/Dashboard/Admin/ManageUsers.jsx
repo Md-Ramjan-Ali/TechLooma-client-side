@@ -4,7 +4,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import Loading from "../../../Components/Loading/Loading";
 
-const AllUsers = () => {
+const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
   const [loading, setLoading] = useState(true);
 
@@ -101,4 +101,4 @@ const AllUsers = () => {
   );
 };
 
-export default AllUsers;
+export default ManageUsers;

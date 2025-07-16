@@ -92,12 +92,12 @@ const MyProducts = () => {
                 <td>{product.votes || 0}</td>
                 <td>
                   <span
-                    className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      product.status === "Accepted"
-                        ? "bg-green-500"
-                        : product.status === "Rejected"
-                        ? "bg-red-500"
-                        : "bg-yellow-500"
+                    className={` text-xs font-semibold capitalize ${
+                      product.status === "accepted"
+                        ? "text-green-500"
+                        : product.status === "rejected"
+                        ? "text-red-500"
+                        : "text-yellow-500"
                     }`}
                   >
                     {product.status || "Pending"}

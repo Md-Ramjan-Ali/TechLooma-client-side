@@ -61,13 +61,13 @@ const DashboardLayout = () => {
               <li>
                 <NavLink to="/dashboard">
                   <FaHome className="inline-block mr-2" />
-                  Home
+                  Statistics
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/all-users">
+                <NavLink to="/dashboard/manage-users">
                   <FaUsers className="inline-block mr-2" />
-                  All Users
+                  Manage Users
                 </NavLink>
               </li>
               <li>
@@ -83,16 +83,16 @@ const DashboardLayout = () => {
           {!isLoading && role === "moderator" && (
             <>
               <li>
-                <NavLink to="/dashboard/moderate">
+                <NavLink to="/dashboard/product-review">
                   <FaGavel className="inline-block mr-2" />
-                  Moderation Queue
+                  Product Review Queue
                 </NavLink>
               </li>
 
               <li>
-                <NavLink to="/dashboard/reported-products">
+                <NavLink to="/dashboard/report-content">
                   <FaFlag className="inline-block mr-2" />
-                  Reported Products
+                  Reported Contents
                 </NavLink>
               </li>
             </>

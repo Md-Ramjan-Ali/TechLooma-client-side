@@ -4,10 +4,12 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { WithContext as ReactTags } from "react-tag-input";
 import Swal from "sweetalert2";
-import useAuth from "../../../hooks/useAuth";
 import { FaImage } from "react-icons/fa";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useUserInfo from "../../../hooks/useUserInfo";
+import { useQuery } from "@tanstack/react-query";
+import useAuth from "../../../hooks/useAuth";
+import { Link } from "react-router";
 
 const AddProduct = () => {
   const { user } = useAuth();
@@ -16,15 +18,35 @@ const AddProduct = () => {
   const { register, handleSubmit, reset } = useForm();
   const [tags, setTags] = useState([]);
   const [loading, setLoading] = useState(false);
-    const { userInfo } = useUserInfo();
-    const isSubscribed = userInfo?.isSubscribed;
+  const { userInfo } = useUserInfo();
+  const isSubscribed = userInfo?.subscribed;
 
   const handleAddition = (tag) => setTags([...tags, tag]);
   const handleDelete = (i) => setTags(tags.filter((_, index) => index !== i));
 
+  const { data: myProducts = [], refetch } = useQuery({
+    queryKey: ["my-products", user?.email],
+    // enabled: !!user.email,
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/products?email=${user?.email}`);
+      setLoading(false);
+      return res.data;
+    },
+  });
+
   const onSubmit = async (data) => {
     setLoading(true);
     try {
+      // Limit post product
+      if (!isSubscribed && myProducts.length >= 1) {
+        Swal.fire({
+          icon: "error",
+          title: "Limit Reached",
+          text: "You can only add 1 product. Subscribe to add more.",
+        });
+        return;
+      }
+
       // Prepare product data
       const productData = {
         name: data.name,
@@ -41,12 +63,13 @@ const AddProduct = () => {
         create_At: new Date(),
       };
 
-      const res = await axiosSecure.post("products", productData);
+      const res = await axiosSecure.post("/products", productData);
       console.log(res.data);
 
       if (res.data.insertedId) {
         Swal.fire("Success", "Product added successfully!", "success");
-        // reset();
+        reset();
+        refetch();
         setTags([]);
       }
     } catch (err) {
@@ -191,12 +214,22 @@ const AddProduct = () => {
 
         {/* Submit Button */}
         <button
-          disabled={loading}
           type="submit"
+          // disabled={!isSubscribed && myProducts.length >= 1}
           className="w-full py-3 rounded-xl font-semibold bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary transition-all duration-200 cursor-pointer"
         >
           {loading ? "Submitting..." : "Submit Product"}
         </button>
+        {!isSubscribed && myProducts.length >= 1 && (
+          <p className="text-red-500 text-sm font-medium bg-red-100 border border-red-300 rounded-md px-4 py-2 mt-2">
+            You've reached your product limit. Please{" "}
+            <span className="font-semibold text-red-600">subscribe</span> to add
+            more.{" "}
+            <Link className="text-blue-500" to="/dashboard/my-profile">
+              Click here..
+            </Link>
+          </p>
+        )}
       </form>
     </motion.div>
   );

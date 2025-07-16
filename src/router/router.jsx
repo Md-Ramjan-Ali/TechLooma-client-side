@@ -10,10 +10,14 @@ import Register from "../Pages/Authentication/Register/Register";
 import MyProfile from "../Pages/Dashboard/User/MyProfile";
 import AddProduct from "../Pages/Dashboard/User/AddProduct";
 import AdminRoute from "../routes/AdminRoute";
-import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
+// import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
 import ManageCoupons from "../Pages/Dashboard/Admin/ManageCoupon";
 import MyProducts from "../Pages/Dashboard/User/MyProducts";
 import UpdateProduct from "../Pages/Dashboard/User/UpdateProduct";
+import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
+import ModeratorRoute from "../routes/ModeratorRoute";
+import ProductReview from "../Pages/Dashboard/Moderator/ProductReview";
+import ReportedContent from "../Pages/Dashboard/Moderator/ReportedContent";
 
 export const router = createBrowserRouter([
   {
@@ -51,12 +55,28 @@ export const router = createBrowserRouter([
         Component: UpdateProduct,
       },
       // moderator panel routes--------------------------------
+      {
+        path: "product-review",
+        element: (
+          <ModeratorRoute>
+            <ProductReview></ProductReview>
+          </ModeratorRoute>
+        ),
+      },
+      {
+        path: "report-content",
+        element: (
+          <ModeratorRoute>
+            <ReportedContent></ReportedContent>
+          </ModeratorRoute>
+        ),
+      },
       // admin panel routes------------------------------------
       {
-        path: "all-users",
+        path: "manage-users",
         element: (
           <AdminRoute>
-            <AllUsers></AllUsers>
+            <ManageUsers></ManageUsers>
           </AdminRoute>
         ),
       },

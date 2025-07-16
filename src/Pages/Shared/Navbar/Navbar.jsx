@@ -78,6 +78,7 @@ const Navbar = () => {
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 src={user?.photoURL || defaultLogo}
                 alt="Profile"
+                referrerPolicy="no-referrer"
                 data-tooltip-id="user-tooltip"
                 data-tooltip-content={user.displayName}
                 className="w-10 h-10 rounded-full border-2 border-[#22d3ee] cursor-pointer"
