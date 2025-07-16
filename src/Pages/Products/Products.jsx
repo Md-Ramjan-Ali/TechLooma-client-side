@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../hooks/useAxios";
 import ProductCard from "./ProductCard";
+import Pagination from "./Pagination";
 
 const Products = () => {
   const axiosInstance=useAxios()
@@ -50,19 +51,7 @@ const Products = () => {
       </div>
 
       {/* Pagination */}
-      <div className="flex justify-center gap-2">
-        {Array.from({ length: totalPages }, (_, idx) => idx + 1).map((p) => (
-          <button
-            key={p}
-            onClick={() => setPage(p)}
-            className={`px-4 py-2 rounded ${
-              p === page ? "bg-primary text-white" : "bg-base-200"
-            }`}
-          >
-            {p}
-          </button>
-        ))}
-      </div>
+      <Pagination page={page} setPage={setPage} totalPages={totalPages} />
     </div>
   );
 };
