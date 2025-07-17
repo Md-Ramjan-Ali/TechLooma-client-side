@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router';
 import TechLoomaLogo from '../Components/TechLoomaLogo/TechLoomaLogo';
-import { FaFlag, FaGavel, FaHome, FaPlus, FaThList, FaTicketAlt, FaUser, FaUsers } from 'react-icons/fa';
+import { FaChartPie, FaFlag, FaGavel, FaHome, FaPlus, FaThList, FaTicketAlt, FaUser, FaUsers } from 'react-icons/fa';
 import useUserRole from '../hooks/useUserRole';
 
 const DashboardLayout = () => {
@@ -60,7 +60,7 @@ const DashboardLayout = () => {
             <>
               <li>
                 <NavLink to="/dashboard/statistics">
-                  <FaHome className="inline-block mr-2" />
+                  <FaChartPie className="inline-block mr-2" />
                   Statistics
                 </NavLink>
               </li>
