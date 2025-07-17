@@ -10,16 +10,16 @@ import Register from "../Pages/Authentication/Register/Register";
 import MyProfile from "../Pages/Dashboard/User/MyProfile";
 import AddProduct from "../Pages/Dashboard/User/AddProduct";
 import AdminRoute from "../routes/AdminRoute";
-// import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
 import ManageCoupons from "../Pages/Dashboard/Admin/ManageCoupon";
 import MyProducts from "../Pages/Dashboard/User/MyProducts";
 import UpdateProduct from "../Pages/Dashboard/User/UpdateProduct";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import ModeratorRoute from "../routes/ModeratorRoute";
 import ProductReview from "../Pages/Dashboard/Moderator/ProductReview";
-import ReportedContent from "../Pages/Dashboard/Moderator/ReportedContent";
 import PrivetRouter from "../routes/PrivetRouter/PrivetRouter";
 import ProductDetails from "../Pages/Products/ProductDetails";
+import ReportedContent from "../Pages/Dashboard/Moderator/ReportedContents";
+import Statistics from "../Pages/Dashboard/Admin/Statistics";
 
 export const router = createBrowserRouter([
   {
@@ -81,7 +81,23 @@ export const router = createBrowserRouter([
           </ModeratorRoute>
         ),
       },
+      {
+        path: "product/:id",
+        element: (
+          <ModeratorRoute>
+            <ProductDetails></ProductDetails>
+          </ModeratorRoute>
+        ),
+      },
       // admin panel routes------------------------------------
+      {
+        path:'statistics',
+        element: (
+          <AdminRoute>
+            <Statistics></Statistics>
+          </AdminRoute>
+        ),
+      },
       {
         path: "manage-users",
         element: (

@@ -59,7 +59,7 @@ const DashboardLayout = () => {
           {!isLoading && role === "admin" && (
             <>
               <li>
-                <NavLink to="/dashboard">
+                <NavLink to="/dashboard/statistics">
                   <FaHome className="inline-block mr-2" />
                   Statistics
                 </NavLink>
