@@ -18,6 +18,8 @@ import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import ModeratorRoute from "../routes/ModeratorRoute";
 import ProductReview from "../Pages/Dashboard/Moderator/ProductReview";
 import ReportedContent from "../Pages/Dashboard/Moderator/ReportedContent";
+import PrivetRouter from "../routes/PrivetRouter/PrivetRouter";
+import ProductDetails from "../Pages/Products/ProductDetails";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +33,14 @@ export const router = createBrowserRouter([
       {
         path: "/products",
         Component: Products,
+      },
+      {
+        path: "/product/:id",
+        element: (
+          <PrivetRouter>
+            <ProductDetails></ProductDetails>
+          </PrivetRouter>
+        ),
       },
     ],
   },
