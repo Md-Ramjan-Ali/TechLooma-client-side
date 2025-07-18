@@ -11,7 +11,7 @@ const ManageCoupons = () => {
     code: "",
     description: "",
     discount: "",
-    createDate: new Date(),
+    createDate: "",
     expiryDate: "",
   });
 
@@ -30,11 +30,17 @@ const ManageCoupons = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (editingId) {
-      await axiosSecure.put(`/coupons/${editingId}`, form);
+      await axiosSecure.put(`/coupons/${editingId}`, {
+        ...form,
+        expiryDate: new Date(form.expiryDate).toISOString(),
+        discount: parseFloat(form.discount),
+      });
       Swal.fire("Updated!", "Coupon updated successfully!", "success");
     } else {
       await axiosSecure.post("/coupons", {
         ...form,
+        createDate: new Date().toISOString(),
+        expiryDate: new Date(form.expiryDate).toISOString(),
         discount: parseFloat(form.discount),
       });
       Swal.fire("Success", "Coupon created!", "success");
@@ -66,7 +72,7 @@ const ManageCoupons = () => {
       code: coupon.code,
       description: coupon.description,
       discount: coupon.discount,
-      expiryDate: coupon.expiryDate,
+      expiryDate: coupon.expiryDate?.substring(0, 10),
     });
   };
 
@@ -145,7 +151,7 @@ const ManageCoupons = () => {
                 <td>{coupon.code}</td>
                 <td>{coupon.description?.slice(0, 25)}...</td>
                 <td>{coupon.discount * 100}%</td>
-                <td>{coupon.expiryDate}</td>
+                <td>{new Date(coupon.expiryDate).toLocaleDateString()}</td>
                 <td className="flex gap-3">
                   <button
                     onClick={() => handleEdit(coupon)}
