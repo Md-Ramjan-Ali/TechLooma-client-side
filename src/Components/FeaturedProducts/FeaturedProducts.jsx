@@ -6,7 +6,6 @@ import useAxios from "../../hooks/useAxios";
 const FeaturedProducts = () => {
   const axiosInstance = useAxios();
 
-
   const { data: featured = [], refetch } = useQuery({
     queryKey: ["featured-products"],
     queryFn: async () => {
@@ -25,7 +24,11 @@ const FeaturedProducts = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {featured.map((product) => (
-            <FeatureCard product={product} refetch={refetch}></FeatureCard>
+            <FeatureCard
+              key={product._id}
+              product={product}
+              refetch={refetch}
+            ></FeatureCard>
           ))}
         </div>
       </div>
