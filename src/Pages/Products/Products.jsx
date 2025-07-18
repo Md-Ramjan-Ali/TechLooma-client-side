@@ -3,18 +3,21 @@ import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../hooks/useAxios";
 import ProductCard from "./ProductCard";
 import Pagination from "./Pagination";
+import Loading from "../../Components/Loading/Loading";
 
 const Products = () => {
   const axiosInstance=useAxios()
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
+  const [loading,setLoading]=useState(true)
 
-  const { data = {}, refetch } = useQuery({
+  const { data = {}, refetch , isLoading } = useQuery({
     queryKey: ["accepted-products", searchText, page],
     queryFn: async () => {
       const res = await axiosInstance.get(
         `/products/accepted?search=${searchText}&page=${page}`
       );
+      setLoading(false)
       return res.data;
     },
   });
@@ -26,6 +29,10 @@ const Products = () => {
     setPage(1);
     refetch();
   };
+
+  if(loading || isLoading){
+    return <Loading></Loading>
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
