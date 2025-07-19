@@ -14,7 +14,7 @@ import TechLoomaLogo from "../../../Components/TechLoomaLogo/TechLoomaLogo";
 const Footer = () => {
   return (
     <div>
-      <footer className="bg-base-content text-white pt-10">
+      <footer className="bg-[#071B2E]/95 text-secondary-content pt-10">
         <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-5 lg:px-0">
           {/* Left: Text and Image */}
           <div>
@@ -110,7 +110,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Line */}
-        <div className="bg-base-content border-t-1 border-primary/10 text-gray-500 text-center mt-5 py-5">
+        <div className="bg-[#071B2E]/95 border-t-1 border-primary/10 text-gray-500 text-center mt-5 py-5">
           © {new Date().getFullYear()} TechLooma | Apps Launch Platform. All
           rights reserved.
         </div>

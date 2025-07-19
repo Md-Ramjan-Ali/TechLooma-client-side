@@ -4,20 +4,25 @@ import useAxios from "../../hooks/useAxios";
 import ProductCard from "./ProductCard";
 import Pagination from "./Pagination";
 import Loading from "../../Components/Loading/Loading";
+import { FaSearch } from "react-icons/fa";
 
 const Products = () => {
-  const axiosInstance=useAxios()
+  const axiosInstance = useAxios();
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
-  const [loading,setLoading]=useState(true)
+  const [loading, setLoading] = useState(true);
 
-  const { data = {}, refetch , isLoading } = useQuery({
+  const {
+    data = {},
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["accepted-products", searchText, page],
     queryFn: async () => {
       const res = await axiosInstance.get(
         `/products/accepted?search=${searchText}&page=${page}`
       );
-      setLoading(false)
+      setLoading(false);
       return res.data;
     },
   });
@@ -30,22 +35,34 @@ const Products = () => {
     refetch();
   };
 
-  if(loading || isLoading){
-    return <Loading></Loading>
+  if (loading || isLoading) {
+    return <Loading></Loading>;
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
+    <div className="w-11/12 mx-auto px-4 py-10">
       {/* Search Bar */}
-      <form onSubmit={handleSearch} className="mb-8 flex justify-center">
-        <input
-          type="text"
-          placeholder="Search by tag (e.g., social, ai, app)"
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-          className="input input-bordered w-full max-w-md mr-4"
-        />
-        <button type="submit" className="btn btn-primary">
+      <form
+        onSubmit={handleSearch}
+        className="mb-8 flex justify-center sticky top-0 z-50"
+      >
+        <div className="relative w-full max-w-5xl">
+          <input
+            type="text"
+            placeholder="Search by tags..."
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            className="relative input focus:outline-0 rounded-tl-full rounded-bl-full w-full  lg:pl-15  py-6 backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] text-secondary-content"
+          />
+          <span className="absolute  top-1/2 left-6 transform -translate-y-1/2 text-xl z-20  ">
+            <FaSearch className="text-secondary-content" />
+          </span>
+        </div>
+
+        <button
+          type="submit"
+          className="px-5 py-2 bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] text-secondary-content rounded-tr-full rounded-br-full "
+        >
           Search
         </button>
       </form>

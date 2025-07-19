@@ -37,7 +37,7 @@ const CustomersReview = () => {
   }
 
   return (
-    <section className="px-5 py-16 bg-[#071B2E]">
+    <section className="px-5 py-16 bg-[#071B2E] ">
       <div className="w-11/12 mx-auto">
         <div className="md:flex justify-between items-start mb-10 text-secondary-content">
           <div>

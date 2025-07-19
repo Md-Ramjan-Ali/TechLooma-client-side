@@ -9,7 +9,7 @@ import CustomersReview from '../../Components/CustomersReview/CustomersReview';
 
 const Home = () => {
   return (
-    <div className='text-secondary-content'>
+    <div className='text-secondary-content bg-base-content'>
       <Banner></Banner>
       <Marketing></Marketing>
       <FeaturedProducts></FeaturedProducts>
