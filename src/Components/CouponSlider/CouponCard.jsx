@@ -48,9 +48,9 @@ const CouponCard = ({ coupons }) => {
   };
 
   return (
-    <div className="py-8 px-4">
+    <div className="py-2 px-4">
       <h2 className="text-3xl font-bold mb-8 text-center text-secondary-content">
-        Exclusive <span className="text-teal-500">Discounts</span>
+        Exclusive <span className="text-primary">Discounts</span>
       </h2>
 
       <Swiper
@@ -67,9 +67,9 @@ const CouponCard = ({ coupons }) => {
       >
         {coupons.map((coupon) => (
           <SwiperSlide key={coupon._id}>
-            <div className="relative bg-white rounded-xl shadow-xl overflow-hidden border-2 border-teal-100 transform hover:scale-105 transition-all duration-300 h-full">
+            <div className="relative bg-[#071B2E] text-secondary-content border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl overflow-hidden  h-full">
               {/* Ribbon */}
-              <div className="absolute top-0 right-0 bg-teal-500 text-white px-4 py-1 text-xs font-bold transform rotate-45 translate-x-8 translate-y-4 w-32 text-center">
+              <div className="absolute top-0 right-0 bg-primary  px-4 py-1 text-xs font-bold transform rotate-45 translate-x-8 translate-y-4 w-32 text-center">
                 {parseFloat(coupon.discount) * 100}% OFF
               </div>
 
@@ -77,16 +77,12 @@ const CouponCard = ({ coupons }) => {
                 {/* Coupon Header */}
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <h3 className="text-xl font-bold text-gray-800">
-                      {coupon.code}
-                    </h3>
-                    <p className="text-sm text-gray-500">
-                      Use code at checkout
-                    </p>
+                    <h3 className="text-xl font-bold ">{coupon.code}</h3>
+                    <p className="text-sm">Use code at checkout</p>
                   </div>
                   <button
                     onClick={() => copyToClipboard(coupon.code, coupon._id)}
-                    className="flex items-center gap-1 bg-teal-50 text-teal-600 px-3 py-1 rounded-full text-sm hover:bg-teal-100 transition-colors mr-8"
+                    className="flex items-center gap-1 px-3 py-1 rounded-full text-sm border-1 border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] transition-colors outline-0 mr-8 cursor-pointer"
                   >
                     <FiCopy size={14} />
                     {copiedId === coupon._id ? "Copied!" : "Copy"}
@@ -94,19 +90,17 @@ const CouponCard = ({ coupons }) => {
                 </div>
 
                 {/* Coupon Description */}
-                <p className="text-gray-600 mb-4 line-clamp-2">
-                  {coupon.description}
-                </p>
+                <p className=" mb-4 line-clamp-2">{coupon.description}</p>
 
                 {/* Progress Bar */}
                 <div className="mb-4">
-                  <div className="flex justify-between text-xs text-gray-500 mb-1">
+                  <div className="flex justify-between text-xs mb-1">
                     <span>Limited offer</span>
                     <span>65% claimed</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div
-                      className="bg-gradient-to-r from-teal-400 to-teal-600 h-2 rounded-full"
+                      className="bg-gradient-to-r from-secondary to-primary h-2 rounded-full"
                       style={{ width: "65%" }}
                     ></div>
                   </div>
@@ -114,11 +108,11 @@ const CouponCard = ({ coupons }) => {
 
                 {/* Countdown & CTA */}
                 <div className="flex justify-between items-center mt-6">
-                  <div className="flex items-center text-sm text-gray-500">
+                  <div className="flex items-center text-sm">
                     <FiClock className="mr-1" />
                     <span>{timeLeft[coupon._id] || "Loading..."}</span>
                   </div>
-                  <button className="flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-lg transition-colors">
+                  <button className="flex items-center gap-2 bg-secondary hover:bg-primary px-4 py-2 rounded-tl-2xl rounded-br-2xl transition-colors cursor-pointer">
                     <FiUserPlus /> Subscribe Now
                   </button>
                 </div>

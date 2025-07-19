@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import "swiper/css/grid";
+import Loading from "../Loading/Loading";
 
 const StarRating = ({ rating }) => {
   const fullStars = "★".repeat(rating);
@@ -23,7 +24,7 @@ const StarRating = ({ rating }) => {
 const CustomersReview = () => {
   const axiosInstance = useAxios();
 
-  const { data: reviews = [] } = useQuery({
+  const { data: reviews = [] , isLoading} = useQuery({
     queryKey: ["reviews"],
     queryFn: async () => {
       const res = await axiosInstance.get("/reviews");
@@ -31,12 +32,16 @@ const CustomersReview = () => {
     },
   });
 
+  if(isLoading){
+    return <Loading></Loading>
+  }
+
   return (
     <section className="px-5 py-16 bg-[#071B2E]">
       <div className="w-11/12 mx-auto">
         <div className="md:flex justify-between items-start mb-10 text-secondary-content">
           <div>
-            <span className="bg-primary text-xs font-medium px-3 py-1 rounded-md uppercase mb-2 inline-block">
+            <span className="bg-primary text-xs font-medium px-3 py-1 rounded-tl-2xl rounded-br-2xl uppercase mb-2 inline-block">
               Reviews
             </span>
             <h2 className="text-4xl font-bold leading-snug">

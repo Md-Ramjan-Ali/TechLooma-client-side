@@ -14,18 +14,16 @@ import TechLoomaLogo from "../../../Components/TechLoomaLogo/TechLoomaLogo";
 const Footer = () => {
   return (
     <div>
-      <footer className="bg-base-content/95 text-white pt-10">
+      <footer className="bg-base-content text-white pt-10">
         <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-5 lg:px-0">
           {/* Left: Text and Image */}
           <div>
             <div className="text-center md:text-left space-y-6 mb-10">
               <TechLoomaLogo></TechLoomaLogo>
               <p className="mt-2 text-gray-300 max-w-sm">
-                A volunteer management system is a platform that helps
-                organizations recruit, schedule, and track volunteers
-                efficiently. It streamlines communication, event coordination,
-                and performance tracking to enhance volunteer engagement and
-                impact.
+                TechLooma is a trusted platform for discovering and exploring
+                the latest tech products through community-driven reviews and
+                insights.
               </p>
             </div>
           </div>
@@ -59,14 +57,14 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <FaHome className="text-xl mt-1" />
                 <p>
-                  Volunteer for Bangladesh, House 57, <br />
+                  TechLooma for Bangladesh, House 57, <br />
                   Road 7B, Block H, Banani, 1213, Bangladesh
                 </p>
               </div>
 
               <div className="flex items-center gap-3">
                 <FaEnvelope className="text-xl" />
-                <p>mrramjankhan100@gmail.com</p>
+                <p>gmramjanali8888@gmail.com</p>
               </div>
 
               <div className="flex items-center gap-3">
@@ -112,8 +110,8 @@ const Footer = () => {
         </div>
 
         {/* Bottom Line */}
-        <div className="bg-[#111827] text-gray-500 text-center mt-5 py-5">
-          © {new Date().getFullYear()} SebaConnect | Volunteer Platform. All
+        <div className="bg-base-content border-t-1 border-primary/10 text-gray-500 text-center mt-5 py-5">
+          © {new Date().getFullYear()} TechLooma | Apps Launch Platform. All
           rights reserved.
         </div>
       </footer>

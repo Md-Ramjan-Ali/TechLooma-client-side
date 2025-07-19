@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import aboutImage from "../../assets/about-image.png";
+import { FiSearch } from "react-icons/fi";
+import { Link } from "react-router";
 
 
 
@@ -32,7 +34,7 @@ const AboutMe = () => {
             Powering Product Discovery for the Next Generation
           </h1>
           <p className="italic text-white/80">
-            At <span className="text-cyan-400 font-semibold">TechLooma</span>,
+            At <span className="text-secondary font-semibold">TechLooma</span>,
             we believe in celebrating innovation. Whether you're a developer,
             startup, or tech enthusiast — our platform brings the most exciting
             products to light.
@@ -42,10 +44,12 @@ const AboutMe = () => {
             tools built to solve real problems. Upvote your favorites, leave
             feedback, and be part of the product evolution journey.
           </p>
-          <button className="px-6 py-2 bg-primary text-secondary-content rounded-md hover:bg-secondary font-semibold shadow-md transition cursor-pointer flex items-center gap-2">
-           
-            Explore Products
-          </button>
+          <Link to="/products">
+            <button className="px-6 py-2 bg-primary text-secondary-content rounded-tl-2xl rounded-br-2xl hover:bg-secondary font-semibold shadow-md transition cursor-pointer flex items-center gap-2">
+              <FiSearch className="text-lg" />
+              Explore Products
+            </button>
+          </Link>
         </motion.div>
       </div>
     </div>
