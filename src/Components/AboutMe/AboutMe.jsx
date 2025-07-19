@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import aboutImage from "../../assets/about-image.png";
 
 
+
 const AboutMe = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-[#0f0f0f] via-[#1f2937] to-[#0f0f0f] px-6">
@@ -41,9 +42,10 @@ const AboutMe = () => {
             tools built to solve real problems. Upvote your favorites, leave
             feedback, and be part of the product evolution journey.
           </p>
-            <button className="px-6 py-2 bg-primary  text-secondary-content rounded-md hover:bg-secondary font-semibold shadow-md transition cursor-pointer">
-              Explore Products
-            </button>
+          <button className="px-6 py-2 bg-primary text-secondary-content rounded-md hover:bg-secondary font-semibold shadow-md transition cursor-pointer flex items-center gap-2">
+           
+            Explore Products
+          </button>
         </motion.div>
       </div>
     </div>
