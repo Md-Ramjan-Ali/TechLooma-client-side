@@ -54,14 +54,14 @@ const Products = () => {
             onChange={(e) => setSearchText(e.target.value)}
             className="relative input focus:outline-0 rounded-tl-full rounded-bl-full w-full  lg:pl-15  py-6 backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] text-secondary-content"
           />
-          <span className="absolute  top-1/2 left-6 transform -translate-y-1/2 text-xl z-20  ">
+          <span className="absolute  top-1/2 left-6 transform -translate-y-1/2 text-xl z-20 ">
             <FaSearch className="text-secondary-content" />
           </span>
         </div>
 
         <button
           type="submit"
-          className="px-5 py-2 bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] text-secondary-content rounded-tr-full rounded-br-full "
+          className="px-5 py-2 bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] text-secondary-content rounded-tr-full rounded-br-full cursor-pointer"
         >
           Search
         </button>

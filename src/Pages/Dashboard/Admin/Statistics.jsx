@@ -34,17 +34,9 @@ const Statistics = () => {
   return (
     <div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-10 max-w-5xl mx-auto p-6 sm:p-8 md:p-10 backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl my-5 text-secondary-content">
-        <div className="bg-[#f87171]  p-6 rounded-lg text-center shadow">
-          <h3 className="text-xl font-semibold">Total Users</h3>
-          <p className="text-3xl font-bold mt-2">{data.totalUsers}</p>
-        </div>
         <div className="bg-[#3b82f6]  p-6 rounded-lg text-center shadow">
           <h3 className="text-xl font-semibold">Total Products</h3>
           <p className="text-3xl font-bold mt-2">{data.totalProducts}</p>
-        </div>
-        <div className="bg-[#a78bfa]  p-6 rounded-lg text-center shadow">
-          <h3 className="text-xl font-semibold">Reviews</h3>
-          <p className="text-3xl font-bold mt-2">{data.totalReviews}</p>
         </div>
         <div className="bg-[#00a66c]  p-6 rounded-lg text-center shadow">
           <h3 className="text-xl font-semibold">Accepted Products</h3>
@@ -53,6 +45,14 @@ const Statistics = () => {
         <div className="bg-[#facc15]  p-6 rounded-lg text-center shadow">
           <h3 className="text-xl font-semibold">Pending Products</h3>
           <p className="text-3xl font-bold mt-2">{data.pendingCount}</p>
+        </div>
+        <div className="bg-[#f87171]  p-6 rounded-lg text-center shadow">
+          <h3 className="text-xl font-semibold">Total Users</h3>
+          <p className="text-3xl font-bold mt-2">{data.totalUsers}</p>
+        </div>
+        <div className="bg-[#a78bfa]  p-6 rounded-lg text-center shadow">
+          <h3 className="text-xl font-semibold">Total Reviews</h3>
+          <p className="text-3xl font-bold mt-2">{data.totalReviews}</p>
         </div>
       </div>
 

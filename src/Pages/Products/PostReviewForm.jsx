@@ -46,23 +46,23 @@ const PostReviewForm = ({ productId, refetchReviews }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-4 bg-base-200 p-4 rounded"
+      className="space-y-4 backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl p-5"
     >
       <h3 className="text-xl font-semibold">Write a Review</h3>
       <input
         readOnly
         defaultValue={user.displayName}
-        className="input input-bordered w-full"
+        className="input bg-base-content text-secondary-content border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] w-full"
       />
       <input
         readOnly
         defaultValue={user.photoURL}
-        className="input input-bordered w-full"
+        className="input bg-base-content text-secondary-content border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] w-full"
       />
       <textarea
         {...register("description", { required: true })}
         placeholder="Your review"
-        className="textarea textarea-bordered w-full"
+        className="textarea bg-base-content text-secondary-content border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] w-full"
       ></textarea>
       {errors.description && (
         <p className="text-red-500 text-sm">Description is required</p>
@@ -85,11 +85,11 @@ const PostReviewForm = ({ productId, refetchReviews }) => {
             />
           )}
         />
-        {errors.rating && (
+        {errors.rating?.rules==='required' && (
           <p className="text-red-500 text-sm mt-1">Rating is required</p>
         )}
       </div>
-      <button type="submit" className="btn btn-primary">
+      <button type="submit" className="btn bg-secondary text-secondary-content border-0 outline-0 ">
         Submit Review
       </button>
     </form>

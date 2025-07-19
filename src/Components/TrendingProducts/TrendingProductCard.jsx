@@ -19,6 +19,7 @@ const TrendingProductCard = ({ product, refetch }) => {
     ownerEmail,
     votedUsers = [],
     description,
+    ownerName,
   } = product;
 
   const hasVoted = votedUsers.includes(user?.email);
@@ -60,11 +61,14 @@ const TrendingProductCard = ({ product, refetch }) => {
       <div className="p-5 flex-grow flex flex-col space-y-6">
         {/* Product Name */}
         <div className="flex justify-between items-center">
-          <h2 className="text-xl font-bold mb-3 text-blue-600 transition-colors">
-            <Link to={`/product/${_id}`} className="">
-              {name}
-            </Link>
-          </h2>
+          <div className="">
+            <h2 className="text-xl font-bold mb-3 text-blue-600 transition-colors">
+              <Link to={`/product/${_id}`} className="">
+                {name}
+              </Link>
+            </h2>
+            <p className="text-sm text-gray-500 -mt-2">By {ownerName}</p>
+          </div>
           {/* Vote Button */}
 
           <button

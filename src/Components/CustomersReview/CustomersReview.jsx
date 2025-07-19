@@ -24,7 +24,7 @@ const StarRating = ({ rating }) => {
 const CustomersReview = () => {
   const axiosInstance = useAxios();
 
-  const { data: reviews = [] , isLoading} = useQuery({
+  const { data: reviews = [], isLoading } = useQuery({
     queryKey: ["reviews"],
     queryFn: async () => {
       const res = await axiosInstance.get("/reviews");
@@ -32,8 +32,8 @@ const CustomersReview = () => {
     },
   });
 
-  if(isLoading){
-    return <Loading></Loading>
+  if (isLoading) {
+    return <Loading></Loading>;
   }
 
   return (
@@ -86,7 +86,7 @@ const CustomersReview = () => {
         >
           {reviews.map((review) => (
             <SwiperSlide key={review._id}>
-              <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl flex flex-col justify-between h-full text-secondary-content">
+              <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl flex flex-col text-secondary-content h-[180px]">
                 <div className="flex justify-between mb-4 border-b-1 border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] p-4">
                   <h4 className="font-bold  capitalize">
                     {review.reviewerName}
@@ -95,21 +95,24 @@ const CustomersReview = () => {
                     {review.reviewerRole} Review
                   </span>
                 </div>
-                <div className="flex gap-4 items-center px-6">
+
+                <div className="flex gap-4 items-start px-5 pb-5">
                   <img
                     src={review.reviewerImage}
                     alt={review.reviewerName}
                     referrerPolicy="no-referrer"
                     className="w-16 h-16 rounded-md object-cover"
                   />
-                  <p className="">
-                    {review.description ||
-                      "This platform helped me gain visibility for my product and engage with a real tech-focused community."}
-                  </p>
+                  <div className="flex flex-col justify-start">
+                    <p className="line-clamp-2">
+                      {review.description ||
+                        "This platform helped me gain visibility for my product and engage with a real tech-focused community."}
+                    </p>
+                    <p className="">
+                      <StarRating rating={parseInt(review.rating)} />
+                    </p>
+                  </div>
                 </div>
-                <p className="p-6">
-                  <StarRating rating={parseInt(review.rating)} />
-                </p>
               </div>
             </SwiperSlide>
           ))}
