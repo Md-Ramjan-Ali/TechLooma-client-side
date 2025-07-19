@@ -49,7 +49,7 @@ const CouponCard = ({ coupons }) => {
 
   return (
     <div className="py-8 px-4">
-      <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">
+      <h2 className="text-3xl font-bold mb-8 text-center text-secondary-content">
         Exclusive <span className="text-teal-500">Discounts</span>
       </h2>
 
@@ -63,7 +63,7 @@ const CouponCard = ({ coupons }) => {
         autoplay={{ delay: 3500, disableOnInteraction: false }}
         loop={true}
         modules={[Autoplay]}
-        className="w-11/12 mx-auto"
+        className="w-11/12 mx-auto rounded-xl"
       >
         {coupons.map((coupon) => (
           <SwiperSlide key={coupon._id}>
