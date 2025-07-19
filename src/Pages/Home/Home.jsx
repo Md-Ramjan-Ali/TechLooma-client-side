@@ -5,6 +5,7 @@ import FeaturedProducts from '../../Components/FeaturedProducts/FeaturedProducts
 import TrendingProducts from '../../Components/TrendingProducts/TrendingProducts';
 import CouponSlider from '../../Components/CouponSlider/CouponSlider';
 import AboutMe from '../../Components/AboutMe/AboutMe';
+import CustomersReview from '../../Components/CustomersReview/CustomersReview';
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <TrendingProducts></TrendingProducts>
       <CouponSlider></CouponSlider>
       <AboutMe></AboutMe>
+      <CustomersReview></CustomersReview>
     </div>
   );
 };

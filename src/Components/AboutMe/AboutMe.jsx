@@ -32,7 +32,7 @@ const AboutMe = () => {
           </h1>
           <p className="italic text-white/80">
             At <span className="text-cyan-400 font-semibold">TechLooma</span>,
-            we believe in celebrating innovation. Whether you’re a developer,
+            we believe in celebrating innovation. Whether you're a developer,
             startup, or tech enthusiast — our platform brings the most exciting
             products to light.
           </p>

@@ -5,10 +5,12 @@ import { Controller, useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
+import useUserRole from '../../hooks/useUserRole';
 
 const PostReviewForm = ({ productId, refetchReviews }) => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const { role } = useUserRole();
     const {
       register,
       handleSubmit,
@@ -24,6 +26,7 @@ const PostReviewForm = ({ productId, refetchReviews }) => {
        reviewerEmail: user?.email,
        reviewerName: user?.displayName,
        reviewerImage: user?.photoURL,
+       reviewerRole: role,
        created_At: new Date(),
      };
 
