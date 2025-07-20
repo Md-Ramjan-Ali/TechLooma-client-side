@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
         Component: Dashboard
       },
 
-      // user route
+      // user panel routes
       {
         path: "my-profile",
         Component: MyProfile,

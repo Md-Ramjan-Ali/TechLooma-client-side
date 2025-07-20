@@ -9,6 +9,10 @@ import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useSaveUser from "../../../Utility/useSaveUser";
+import Lottie from "lottie-react";
+import registerLottie from "../../../assets/Loties/Registration animation.json";
+import registerCongras from "../../../assets/Loties/congratulations.json";
+import { Slide, toast } from "react-toastify";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -27,7 +31,22 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("Register Data:", data);
+    // password validation
+    //password validation
+    const upper = /[A-Z]/.test(data.password);
+    const lower = /[a-z]/.test(data.password);
+    if (data.password.length < 6 || !upper || !lower) {
+      toast.error(
+        "Password must be at least 6 characters and include uppercase and lowercase letters",
+        {
+          position: "top-right",
+          autoClose: 4000,
+          theme: "dark",
+          transition: Slide,
+        }
+      );
+      return;
+    }
 
     createUser(data.email, data.password)
       .then(async (result) => {
@@ -182,7 +201,7 @@ const Register = () => {
                 <input
                   type="file"
                   onChange={handleImageUpload}
-                  // {...register("file", { required: true })}
+                  {...register("file", { required: true })}
                   accept="image/*"
                   className="w-full text-primary-content file:mr-4 file:py-1 file:px-3 
                  file:rounded-full file:border-0 file:text-sm 
@@ -215,19 +234,24 @@ const Register = () => {
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3, duration: 2 }}
-          className="w-full md:w-1/2 border-r-1 border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] text-secondary-content p-10 "
+          className="w-full md:w-1/2 border-r-1 border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] text-secondary-content p-10 relative"
         >
           <div className="">
             <TechLoomaLogo></TechLoomaLogo>
           </div>
-          <div className="flex flex-col justify-center items-center w-full h-full">
-            <h2 className="text-3xl font-bold mb-4 text-center">
-              Join TechLooma Today
-            </h2>
-            <p className="text-sm max-w-xs text-center">
-              Become part of a growing tech community. Share, vote, and discover
-              the most exciting tech products.
-            </p>
+          <div className="flex justify-center items-center h-full">
+            <Lottie
+              className="w-full h-full"
+              animationData={registerLottie}
+              loop={true}
+            ></Lottie>
+          </div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full">
+            <Lottie
+              className="w-full"
+              animationData={registerCongras}
+              loop={true}
+            ></Lottie>
           </div>
         </motion.div>
       </motion.div>

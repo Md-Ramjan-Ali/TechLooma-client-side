@@ -8,9 +8,14 @@ import SocialLogIn from "../SocialLogIn/SocialLogIn";
 import useAuth from "../../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import Lottie from "lottie-react";
+import loginLottie from '../../../assets/Loties/Login.json'
+import ConLottie from '../../../assets/Loties/congratulation.json'
+
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [error,setError]=useState('')
   const { signInUser,setUser } = useAuth();
   const navigate=useNavigate()
   const location=useLocation()
@@ -33,7 +38,7 @@ const Login = () => {
             navigate(from)
           }, 1500);
     }).catch(error=>{
-      console.log(error);
+      setError(error)
     })
   }
 
@@ -71,6 +76,7 @@ const Login = () => {
               {errors.email?.type === "required" && (
                 <p className="text-red-500">Email is required</p>
               )}
+              {error && <p className="text-red-500">Invalid Email</p>}
             </div>
 
             {/* Password */}
@@ -104,6 +110,7 @@ const Login = () => {
                   Password Must be 6 characters or longer
                 </p>
               )}
+              {error && <p className="text-red-500">Invalid Password</p>}
             </div>
 
             {/* Login Button */}
@@ -114,7 +121,8 @@ const Login = () => {
             {/* Sign Up */}
             <p className="text-sm text-primary-content text-center">
               Don't have an account?{" "}
-              <Link state={{from}}
+              <Link
+                state={{ from }}
                 to="/auth/register"
                 className="text-primary hover:underline"
               >
@@ -130,19 +138,24 @@ const Login = () => {
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 2 }}
-          className="w-full md:w-1/2 border-r-1 border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] text-secondary-content p-10"
+          className="w-full md:w-1/2 border-r-1 border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] text-secondary-content p-10 relative"
         >
           <div className="">
             <TechLoomaLogo></TechLoomaLogo>
           </div>
-          <div className=" flex flex-col justify-center items-center w-full h-full">
-            <h2 className="text-3xl font-bold mb-4 text-center">
-              Welcome to TechLooma!
-            </h2>
-            <p className="text-sm max-w-xs text-center">
-              Discover, share, and support innovative tech products from around
-              the world. Sign in to explore the best of tech.
-            </p>
+          <div className="flex justify-center items-center h-full">
+            <Lottie
+              className="w-full h-full"
+              animationData={loginLottie}
+              loop={true}
+            ></Lottie>
+          </div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full">
+            <Lottie
+              className="w-full"
+              animationData={ConLottie}
+              loop={true}
+            ></Lottie>
           </div>
         </motion.div>
       </motion.div>
