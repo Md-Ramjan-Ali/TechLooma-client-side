@@ -124,7 +124,7 @@ const ProductReview = () => {
                   onClick={() => handleMakeFeatured(p._id)}
                   className={`btn btn-sm ${
                     !p.isFeatured
-                      ? "bg-yellow-400 text-black hover:bg-yellow-500"
+                      ? "bg-yellow-400 text-secondary-content hover:bg-secondary"
                       : " text-green-600 "
                   }`}
                   disabled={p.isFeatured}
@@ -133,7 +133,7 @@ const ProductReview = () => {
                 </button>
               </td>
               <td className="space-x-2">
-                <Link to={`/products/${p._id}`} className="btn btn-sm btn-info">
+                <Link to={`/products/${p._id}`} className="btn btn-sm bg-secondary text-secondary-content">
                   View Details
                 </Link>
               </td>
@@ -142,7 +142,7 @@ const ProductReview = () => {
                   onClick={() => handleUpdateStatus(p._id, "accepted")}
                   disabled={p.status === "accepted"}
                   className={`btn btn-sm  ${
-                    p.status === "accepted" ? "text-green-500" : "btn-success"
+                    p.status === "accepted" ? "text-green-500" : "btn-success text-secondary-content"
                   }`}
                 >
                   
@@ -154,7 +154,7 @@ const ProductReview = () => {
                   onClick={() => handleUpdateStatus(p._id, "rejected")}
                   disabled={p.status === "rejected"}
                   className={`btn btn-sm  ${
-                    p.status === "rejected" ? "text-red-500" : "btn-error "
+                    p.status === "rejected" ? "text-red-500" : "bg-red-500 text-secondary-content "
                   }`}
                 >
                   {p.status === "rejected" ? "Rejected" : "Reject"}

@@ -4,6 +4,8 @@ import TechLoomaLogo from '../Components/TechLoomaLogo/TechLoomaLogo';
 import { FaChartPie, FaFlag, FaGavel, FaHome, FaPlus, FaThList, FaTicketAlt, FaUser, FaUsers } from 'react-icons/fa';
 import useUserRole from '../hooks/useUserRole';
 
+import "../Styles/dashboard.css";
+
 const DashboardLayout = () => {
   const { role, isLoading } = useUserRole();
   return (

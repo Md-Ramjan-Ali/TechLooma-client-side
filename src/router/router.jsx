@@ -20,6 +20,7 @@ import PrivetRouter from "../routes/PrivetRouter/PrivetRouter";
 import ProductDetails from "../Pages/Products/ProductDetails";
 import ReportedContent from "../Pages/Dashboard/Moderator/ReportedContents";
 import Statistics from "../Pages/Dashboard/Admin/Statistics";
+import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 
 export const router = createBrowserRouter([
   {
@@ -46,8 +47,19 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivetRouter>
+        <DashboardLayout></DashboardLayout>
+      </PrivetRouter>
+    ),
     children: [
+
+      {
+        index: true,
+        Component: Dashboard
+      },
+
+      // user route
       {
         path: "my-profile",
         Component: MyProfile,
@@ -91,7 +103,7 @@ export const router = createBrowserRouter([
       },
       // admin panel routes------------------------------------
       {
-        path:'statistics',
+        path: "statistics",
         element: (
           <AdminRoute>
             <Statistics></Statistics>

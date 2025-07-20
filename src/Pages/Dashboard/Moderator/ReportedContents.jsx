@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
-import { FaTrash, FaExternalLinkAlt } from "react-icons/fa";
+import { FaTrash, FaEye } from "react-icons/fa";
 import Loading from "../../../Components/Loading/Loading";
 
 const ReportedContents = () => {
@@ -76,17 +76,17 @@ const ReportedContents = () => {
                 <td className="text-red-300 font-bold">
                   {product.reportCount}
                 </td>
-                <td className="space-x-2">
+                <td className="space-x-3 ">
                   <Link
                     to={`/dashboard/product/${product._id}`}
-                    className="btn btn-sm btn-info"
+                    className="btn btn-sm btn-info text-secondary-content"
                     title="View Details"
                   >
-                    <FaExternalLinkAlt />
+                    <FaEye size={16} />
                   </Link>
                   <button
                     onClick={() => handleDelete(product._id)}
-                    className="btn btn-sm btn-error"
+                    className="btn btn-sm btn-error text-secondary-content"
                     title="Delete Product"
                   >
                     <FaTrash />

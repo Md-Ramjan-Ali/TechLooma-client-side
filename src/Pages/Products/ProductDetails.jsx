@@ -190,7 +190,7 @@ const ProductDetails = () => {
                   <FaCalendarAlt className="text-primary"/>
                   <span className="font-medium">Created</span>
                 </div>
-                <div className="text-lg font-medium ">{formattedDate}</div>
+                <div className="text-sm font-medium ">{formattedDate}</div>
               </div>
             </div>
 

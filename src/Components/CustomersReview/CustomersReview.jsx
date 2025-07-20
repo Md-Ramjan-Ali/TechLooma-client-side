@@ -108,9 +108,9 @@ const CustomersReview = () => {
                       {review.description ||
                         "This platform helped me gain visibility for my product and engage with a real tech-focused community."}
                     </p>
-                    <p className="">
+                    <div className="">
                       <StarRating rating={parseInt(review.rating)} />
-                    </p>
+                    </div>
                   </div>
                 </div>
               </div>
