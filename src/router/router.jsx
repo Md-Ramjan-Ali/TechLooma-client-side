@@ -21,6 +21,7 @@ import ProductDetails from "../Pages/Products/ProductDetails";
 import ReportedContent from "../Pages/Dashboard/Moderator/ReportedContents";
 import Statistics from "../Pages/Dashboard/Admin/Statistics";
 import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
+import Forbidden from "../Pages/Forbidden/Forbidden";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
             <ProductDetails></ProductDetails>
           </PrivetRouter>
         ),
+      },
+      {
+        path: '/forbidden',
+        Component: Forbidden
       },
     ],
   },
