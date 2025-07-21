@@ -8,7 +8,7 @@ import { Link } from "react-router";
 
 const AboutMe = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-[#0f0f0f] via-[#1f2937] to-[#0f0f0f] px-6">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-[#0f0f0f] via-[#1f2937] to-[#0f0f0f] px-6 py-5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-7xl">
         {/* Image */}
         <motion.img

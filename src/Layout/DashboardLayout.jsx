@@ -1,8 +1,18 @@
-import React from 'react';
-import { NavLink, Outlet } from 'react-router';
-import TechLoomaLogo from '../Components/TechLoomaLogo/TechLoomaLogo';
-import { FaChartPie, FaFlag, FaGavel, FaHome, FaPlus, FaThList, FaTicketAlt, FaUser, FaUsers } from 'react-icons/fa';
-import useUserRole from '../hooks/useUserRole';
+import React from "react";
+import { NavLink, Outlet } from "react-router";
+import TechLoomaLogo from "../Components/TechLoomaLogo/TechLoomaLogo";
+import {
+  FaChartPie,
+  FaFlag,
+  FaGavel,
+  FaHome,
+  FaPlus,
+  FaThList,
+  FaTicketAlt,
+  FaUser,
+  FaUsers,
+} from "react-icons/fa";
+import useUserRole from "../hooks/useUserRole";
 
 import "../Styles/dashboard.css";
 
@@ -11,9 +21,9 @@ const DashboardLayout = () => {
   return (
     <div className="drawer lg:drawer-open ">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col bg-base-content">
+      <div className="drawer-content flex flex-col bg-base-content overflow-hidden">
         {/* Navbar */}
-        <div className="navbar w-full lg:hidden bg-base-content">
+        <div className="navbar w-full lg:hidden bg-[#071B2E] border-b-1 border-primary/20  shadow-sm">
           <div className="flex-none ">
             <label
               htmlFor="my-drawer-2"

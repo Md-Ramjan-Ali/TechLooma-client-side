@@ -76,7 +76,7 @@ const ReportedContents = () => {
                 <td className="text-red-300 font-bold">
                   {product.reportCount}
                 </td>
-                <td className="space-x-3 ">
+                <td className="flex gap-3 ">
                   <Link
                     to={`/dashboard/product/${product._id}`}
                     className="btn btn-sm btn-info text-secondary-content"

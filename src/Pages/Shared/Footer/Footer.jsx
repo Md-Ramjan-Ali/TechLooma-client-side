@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-5 lg:px-0">
           {/* Left: Text and Image */}
           <div>
-            <div className="text-center md:text-left space-y-6 mb-10">
+            <div className=" space-y-6 mb-10">
               <TechLoomaLogo></TechLoomaLogo>
               <p className="mt-2 text-gray-300 max-w-sm">
                 TechLooma is a trusted platform for discovering and exploring
@@ -30,7 +30,7 @@ const Footer = () => {
           <div className="space-y-10">
             <div className="">
               <h3 className="text-xl font-semibold text-white mb-3">
-                Important Info
+                Quick Links
               </h3>
               <ul className="space-y-2 text-gray-300">
                 <li>
@@ -41,6 +41,11 @@ const Footer = () => {
                 <li>
                   <Link to="/privacy" className="hover:text-white">
                     Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/about" className="hover:text-white">
+                    About Us
                   </Link>
                 </li>
                 <li>

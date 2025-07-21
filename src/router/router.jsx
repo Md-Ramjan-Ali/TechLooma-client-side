@@ -22,6 +22,10 @@ import ReportedContent from "../Pages/Dashboard/Moderator/ReportedContents";
 import Statistics from "../Pages/Dashboard/Admin/Statistics";
 import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import Forbidden from "../Pages/Forbidden/Forbidden";
+import About from "../Pages/About/About";
+import Contact from "../Pages/Contact/Contact";
+import Terms from "../Pages/Terms/Terms";
+import Privacy from "../Pages/Privacy/Privacy";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +47,22 @@ export const router = createBrowserRouter([
             <ProductDetails></ProductDetails>
           </PrivetRouter>
         ),
+      },
+      {
+        path: '/about',
+        Component: About
+      },
+      {
+        path: '/contact',
+        Component: Contact
+      },
+      {
+        path: '/terms',
+        Component: Terms
+      },
+      {
+        path: '/privacy',
+        Component: Privacy
       },
       {
         path: '/forbidden',

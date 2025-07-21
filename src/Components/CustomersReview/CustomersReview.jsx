@@ -37,7 +37,7 @@ const CustomersReview = () => {
   }
 
   return (
-    <section className="px-5 py-16 bg-[#071B2E] ">
+    <section className="px-2 py-12 bg-[#071B2E] ">
       <div className="w-11/12 mx-auto">
         <div className="md:flex justify-between items-start mb-10 text-secondary-content">
           <div>
@@ -70,10 +70,16 @@ const CustomersReview = () => {
           spaceBetween={30}
           slidesPerView={2}
           breakpoints={{
+            350: {
+              slidesPerView: 1,
+              grid: {
+                rows: 1,
+              },
+            },
             640: {
               slidesPerView: 1,
               grid: {
-                rows: 2,
+                rows: 1,
               },
             },
             1024: {

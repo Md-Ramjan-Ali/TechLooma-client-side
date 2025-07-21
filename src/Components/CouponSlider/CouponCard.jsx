@@ -48,7 +48,7 @@ const CouponCard = ({ coupons }) => {
   };
 
   return (
-    <div className="py-2 px-4">
+    <div className="py-2 px-2">
       <h2 className="text-3xl font-bold mb-8 text-center text-secondary-content">
         Exclusive <span className="text-primary">Discounts</span>
       </h2>

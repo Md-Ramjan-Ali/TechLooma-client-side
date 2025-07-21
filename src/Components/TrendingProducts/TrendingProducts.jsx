@@ -21,20 +21,17 @@ const TrendingProducts = () => {
   if (isLoading) return <Loading></Loading>
 
   return (
-    <section className="py-16 text-secondary-content px-4">
+    <section className="py-10 text-secondary-content px-2">
       <div className="w-11/12 mx-auto">
         <div className=" bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-tl-full rounded-br-full mb-10">
           <div className="w-8/12 mx-auto py-5 text-center space-y-3">
-            <h2 className="text-3xl md:text-4xl font-bold text-center flex items-center justify-center gap-2">
+            <h2 className="text-xl md:text-4xl font-bold text-center flex items-center justify-center gap-2">
               <FaFire className="text-red-500" />
               Trending Products
             </h2>
             <p>
-              Stay ahead of the curve with our Trending Products, where
-              innovation meets popularity. These items are gaining buzz for
-              their exceptional features, user engagement, and growing demand.
-              Discover what's making waves in the community and why everyone's
-              talking about them.
+              Stay ahead with our Trending Products — popular for their
+              innovation, features, and rising demand in the tech community.
             </p>
           </div>
         </div>
