@@ -18,8 +18,7 @@ const SubscribeModal = ({ setShowModal, user }) => {
   const handleApplyCoupon = async () => {
     try {
       const res = await axiosSecure.get(`/validate-coupon/${coupon}`);
-
-      // ✅ Instead use this:
+      //  Instead use this:
       const percentage = parseFloat(res.data.discount); // 0.5 means 50%
       const calculatedDiscount = Math.round(originalPrice * percentage); // in cents
       setDiscount(calculatedDiscount);

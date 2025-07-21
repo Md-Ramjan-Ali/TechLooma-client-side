@@ -2,19 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Loading from "../../../Components/Loading/Loading";
-import { useState } from "react";
 
 const COLORS = ["#00a66c", "#facc15", "#3b82f6", "#f87171", "#a78bfa"];
 
 const Statistics = () => {
   const axiosSecure = useAxiosSecure();
-  const [loading, setLoading] = useState(true);
 
   const { data = {}, isLoading } = useQuery({
     queryKey: ["admin-stats"],
     queryFn: async () => {
       const res = await axiosSecure.get("/admin/stats");
-      setLoading(false);
       return res.data;
     },
   });
@@ -27,7 +24,7 @@ const Statistics = () => {
     { name: "Reviews", value: data.totalReviews || 0 },
   ];
 
-  if (loading || isLoading) {
+  if (isLoading) {
     return <Loading></Loading>;
   }
 

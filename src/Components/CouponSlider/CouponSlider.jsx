@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import useAxios from "../../hooks/useAxios";
 import CouponCard from "./CouponCard";
+import Loading from "../Loading/Loading";
 
 const CouponSlider = () => {
   const axiosInstance = useAxios();
@@ -16,8 +17,9 @@ const CouponSlider = () => {
     },
   });
 
-  if (isLoading)
-    return <p className="text-center text-gray-400">Loading coupons...</p>;
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
 
   return (
     <section className="py-12">

@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import Loading from "../../../Components/Loading/Loading";
 
 const ManageCoupons = () => {
   const axiosSecure = useAxiosSecure();
@@ -15,13 +16,17 @@ const ManageCoupons = () => {
     expiryDate: "",
   });
 
-  const { data: coupons = [], refetch } = useQuery({
+  const { data: coupons = [], refetch, isLoading } = useQuery({
     queryKey: ["all-coupons"],
     queryFn: async () => {
       const res = await axiosSecure.get("/coupons");
       return res.data;
     },
   });
+
+  if(isLoading){
+    return <Loading></Loading>
+  }
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });

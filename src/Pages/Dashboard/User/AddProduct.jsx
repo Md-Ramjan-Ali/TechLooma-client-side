@@ -15,7 +15,12 @@ const AddProduct = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [productPic, setProductPic] = useState("");
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   const [tags, setTags] = useState([]);
   const [loading, setLoading] = useState(false);
   const { userInfo } = useUserInfo();
@@ -26,7 +31,6 @@ const AddProduct = () => {
 
   const { data: myProducts = [], refetch } = useQuery({
     queryKey: ["my-products", user?.email],
-    // enabled: !!user.email,
     queryFn: async () => {
       const res = await axiosSecure.get(`/products?email=${user?.email}`);
       setLoading(false);
@@ -118,6 +122,11 @@ const AddProduct = () => {
             placeholder="Enter Product Name"
             className="w-full bg-transparent text-secondary-content border-1 border-primary-content rounded-lg  px-4 py-2 focus:outline-none focus:border-primary transition-all duration-200"
           />
+          {errors.name && (
+            <span className="text-red-500 text-sm">
+              Product name is required
+            </span>
+          )}
         </div>
 
         {/* Product Image */}
@@ -128,6 +137,7 @@ const AddProduct = () => {
           <div className="flex items-center border-b border-primary-content px-2 py-2 group-focus-within:border-primary transition-all duration-300">
             <input
               type="file"
+              {...register("image", { required: true })}
               onChange={handleImageUpload}
               accept="image/*"
               className="w-full text-primary-content file:mr-4 file:py-1 file:px-3 
@@ -138,6 +148,11 @@ const AddProduct = () => {
               <FaImage />
             </span>
           </div>
+          {errors.image && (
+            <span className="text-red-500 text-sm">
+              Product image is required
+            </span>
+          )}
         </div>
 
         {/* Description */}
@@ -151,6 +166,11 @@ const AddProduct = () => {
             placeholder="Write a brief description..."
             className="w-full bg-transparent text-secondary-content border border-primary-content rounded-lg px-4 py-2 focus:outline-none focus:border-primary resize-none"
           ></textarea>
+          {errors.description && (
+            <span className="text-red-500 text-sm">
+              Product description is required
+            </span>
+          )}
         </div>
 
         {/* Tags */}
@@ -178,10 +198,15 @@ const AddProduct = () => {
           <label className="block font-medium mb-2">External Link</label>
           <input
             type="url"
-            {...register("externalLink")}
+            {...register("externalLink", { required: true })}
             placeholder="https://yourapp.com"
             className="w-full bg-transparent text-secondary-content border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:border-primary"
           />
+          {errors.externalLink && (
+            <span className="text-red-500 text-sm">
+              Product externalLink is required
+            </span>
+          )}
         </div>
 
         {/* Owner Info */}

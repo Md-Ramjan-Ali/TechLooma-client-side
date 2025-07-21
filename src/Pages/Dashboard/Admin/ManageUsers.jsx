@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
@@ -6,7 +6,6 @@ import Loading from "../../../Components/Loading/Loading";
 
 const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
-  // const [loading, setLoading] = useState(true);
 
   const {
     data: users = [],
@@ -16,7 +15,6 @@ const ManageUsers = () => {
     queryKey: ["all-users"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
-      // setLoading(false);
       return res.data;
     },
   });

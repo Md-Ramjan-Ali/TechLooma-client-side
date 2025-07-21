@@ -14,7 +14,11 @@ const useAxiosSecure = () => {
   // interceptor request
   axiosSecure.interceptors.request.use(
     (config) => {
-      config.headers.Authorization = `Bearer ${user?.accessToken}`;
+         const token = user?.accessToken;
+         if (token) {
+           config.headers.Authorization = `Bearer ${token}`;
+         }
+      // config.headers.Authorization = `Bearer ${user?.accessToken}`;
       return config;
     },
     (error) => {
@@ -28,7 +32,7 @@ const useAxiosSecure = () => {
       return response;
     },
     (error) => {
-      const status = error.status;
+      const status = error.response?.status;
       if (status === 403) {
         navigate("/forbidden");
       } else if (status === 401) {
