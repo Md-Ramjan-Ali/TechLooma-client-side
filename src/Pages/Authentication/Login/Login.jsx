@@ -138,24 +138,26 @@ const Login = () => {
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 2 }}
-          className="w-full md:w-1/2 border-r-1 border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] text-secondary-content p-10 relative"
+          className="w-full md:w-1/2 border-r-1 border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] text-secondary-content p-10"
         >
           <div className="">
             <TechLoomaLogo></TechLoomaLogo>
           </div>
-          <div className="flex justify-center items-center h-full">
-            <Lottie
-              className="w-full h-full"
-              animationData={loginLottie}
-              loop={true}
-            ></Lottie>
-          </div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full">
-            <Lottie
-              className="w-full"
-              animationData={ConLottie}
-              loop={true}
-            ></Lottie>
+          <div className="relative">
+            <div className="flex justify-center items-center h-full">
+              <Lottie
+                className="w-full h-full"
+                animationData={loginLottie}
+                loop={true}
+              ></Lottie>
+            </div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full">
+              <Lottie
+                className="w-full"
+                animationData={ConLottie}
+                loop={true}
+              ></Lottie>
+            </div>
           </div>
         </motion.div>
       </motion.div>

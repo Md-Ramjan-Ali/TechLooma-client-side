@@ -6,7 +6,7 @@ import Loading from "../../../Components/Loading/Loading";
 
 const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   const {
     data: users = [],
@@ -16,7 +16,7 @@ const ManageUsers = () => {
     queryKey: ["all-users"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
-      setLoading(false);
+      // setLoading(false);
       return res.data;
     },
   });
@@ -34,7 +34,7 @@ const ManageUsers = () => {
     }
   };
 
-  if (loading || isLoading) {
+  if (isLoading) {
     return <Loading></Loading>;
   }
 

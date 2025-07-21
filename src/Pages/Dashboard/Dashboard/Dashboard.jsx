@@ -6,10 +6,11 @@ import welcomeMessage from '../../../assets/Loties/Welcome Animation.json'
 import Lottie from 'lottie-react';
 
 const Dashboard = () => {
-  const { role, isLoading } = useUserRole(); 
+  const { role } = useUserRole(); 
   const { userInfo, loading } = useUserInfo();
 
-  if(loading || isLoading){
+
+  if(loading){
     return <Loading></Loading>
   }
 

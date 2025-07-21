@@ -1,5 +1,5 @@
 import React from "react";
-import { FaCaretUp, FaHeart } from "react-icons/fa";
+import { FaCaretUp, FaFire, FaHeart } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
@@ -108,8 +108,8 @@ const TrendingProductCard = ({ product, refetch }) => {
         </div>
         <p className="line-clamp-2 mt-3">{description}</p>
       </div>
-      <p className="absolute top-0 left-0 rounded-tl-xl rounded-br-full bg-base-content border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] px-5 py-1 w-fit">
-        Trending
+      <p className="absolute top-3 left-3">
+        <FaFire className="text-amber-500 text-2xl" />
       </p>
     </div>
   );
