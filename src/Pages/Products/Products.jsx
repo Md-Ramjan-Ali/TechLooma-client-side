@@ -5,6 +5,7 @@ import ProductCard from "./ProductCard";
 import Pagination from "./Pagination";
 import Loading from "../../Components/Loading/Loading";
 import { FaSearch } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const Products = () => {
   const axiosInstance = useAxios();
@@ -41,6 +42,10 @@ const Products = () => {
 
   return (
     <div className="w-11/12 mx-auto px-2 py-10">
+      <Helmet>
+        <title>Products | TechLooma</title>
+      </Helmet>
+
       {/* Search Bar */}
       <form
         onSubmit={handleSearch}

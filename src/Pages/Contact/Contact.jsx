@@ -7,7 +7,7 @@ const Contact = () => {
     // You can add your form submission logic here
   };
   return (
-    <div className="w-8/12 mx-auto py-5 px-2 text-secondary-content">
+    <div className="w-10/12 mx-auto py-5 text-secondary-content">
       <Helmet>
         <title>Contact | TechLooma</title>
       </Helmet>

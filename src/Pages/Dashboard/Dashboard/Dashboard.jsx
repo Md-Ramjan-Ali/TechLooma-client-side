@@ -4,6 +4,7 @@ import Loading from "../../../Components/Loading/Loading";
 import useUserInfo from "../../../hooks/useUserInfo";
 import welcomeMessage from "../../../assets/Loties/Welcome Animation.json";
 import Lottie from "lottie-react";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
   const { role } = useUserRole();
@@ -14,7 +15,11 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="relative text-center w-full md:w-10/12 md:mx-auto py-16 px-10 backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl mx-3 my-5 text-secondary-content min-h-[calc(100vh-20px-30px)] flex flex-col justify-center items-center overflow-hidden">
+    <div className="relative text-center w-11/12 mx-auto px-3 py-16 backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl my-5 text-secondary-content min-h-[calc(100vh-20px-30px)] flex flex-col justify-center items-center overflow-hidden">
+      <Helmet>
+        <title>Dashboard | TechLooma</title>
+      </Helmet>
+
       {role === "admin" && (
         <>
           <h1 className="text-3xl font-bold capitalize">

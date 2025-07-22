@@ -10,6 +10,7 @@ import useUserInfo from "../../../hooks/useUserInfo";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import { Link } from "react-router";
+import { Helmet } from "react-helmet-async";
 
 const AddProduct = () => {
   const { user } = useAuth();
@@ -106,6 +107,10 @@ const AddProduct = () => {
       transition={{ duration: 0.5 }}
       className="max-w-5xl mx-auto p-6 sm:p-8 md:p-10 backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl my-5"
     >
+      <Helmet>
+        <title>Add Product | TechLooma</title>
+      </Helmet>
+
       <h2 className="text-2xl lg:text-3xl font-bold text-center text-cyan-400 mb-8">
         Add Tech Product
       </h2>

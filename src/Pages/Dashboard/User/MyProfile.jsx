@@ -3,17 +3,21 @@ import useAuth from "../../../hooks/useAuth";
 import useUserInfo from "../../../hooks/useUserInfo";
 import SubscribeModal from "./SubscribeModal";
 import Loading from "../../../Components/Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 const MyProfile = () => {
   const { user } = useAuth();
   const { userInfo, isLoading, loading } = useUserInfo();
   const [showModal, setShowModal] = useState(false);
- 
 
-  if (loading || isLoading) return <Loading></Loading>
+  if (loading || isLoading) return <Loading></Loading>;
 
   return (
     <div className="max-w-xl mx-auto p-6 my-10">
+      <Helmet>
+        <title>My Profile | TechLooma</title>
+      </Helmet>
+
       <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl py-5 mb-10">
         <h2 className="text-2xl font-bold mb-4 text-primary text-center">
           My Profile

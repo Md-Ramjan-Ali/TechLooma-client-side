@@ -5,6 +5,7 @@ import { Link } from "react-router";
 import Swal from "sweetalert2";
 import { FaTrash, FaEye } from "react-icons/fa";
 import Loading from "../../../Components/Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 const ReportedContents = () => {
   const axiosSecure = useAxiosSecure();
@@ -50,6 +51,10 @@ const ReportedContents = () => {
 
   return (
     <div className="w-11/12 mx-auto my-5 overflow-x-auto px-4 py-8 backdrop-blur-md bg-base-content/60 border border-error/30 shadow-[0_0_20px_rgba(255,0,0,0.2)] rounded-2xl">
+      <Helmet>
+        <title>Report content | TechLooma</title>
+      </Helmet>
+
       <h2 className="text-2xl text-center font-bold mb-10 text-red-400">
         🛑 Reported Products Content
       </h2>
@@ -78,7 +83,7 @@ const ReportedContents = () => {
                 </td>
                 <td className="flex gap-3 ">
                   <Link
-                    to={`/dashboard/product/${product._id}`}
+                    to={`/product/${product._id}`}
                     className="btn btn-sm btn-info text-secondary-content"
                     title="View Details"
                   >

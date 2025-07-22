@@ -118,14 +118,6 @@ export const router = createBrowserRouter([
           </ModeratorRoute>
         ),
       },
-      {
-        path: "product/:id",
-        element: (
-          <ModeratorRoute>
-            <ProductDetails></ProductDetails>
-          </ModeratorRoute>
-        ),
-      },
       // admin panel routes------------------------------------
       {
         path: "statistics",

@@ -13,6 +13,7 @@ import Lottie from "lottie-react";
 import registerLottie from "../../../assets/Loties/Registration animation.json";
 import registerCongras from "../../../assets/Loties/congratulations.json";
 import { Slide, toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -104,6 +105,10 @@ const Register = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center  px-4 py-10">
+      <Helmet>
+        <title>Register | TechLooma</title>
+      </Helmet>
+
       <motion.div
         initial={{ opacity: 0, x: 100 }}
         animate={{ opacity: 1, x: 0 }}

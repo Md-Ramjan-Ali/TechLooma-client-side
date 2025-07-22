@@ -6,27 +6,23 @@ import { Link } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Loading from "../../../Components/Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 const MyProducts = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const [loading,setLoading]=useState(true)
+  const [loading, setLoading] = useState(true);
 
   // Fetch my products with refetch
-  const {
-    data: products = [],
-    refetch,
-  } = useQuery({
+  const { data: products = [], refetch } = useQuery({
     queryKey: ["my-products", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/products?email=${user?.email}`);
-      setLoading(false)
+      setLoading(false);
       return res.data;
     },
     enabled: !!user?.email,
   });
-
- 
 
   // Handle Delete
   const handleDelete = async (id) => {
@@ -62,11 +58,14 @@ const MyProducts = () => {
     }
   };
 
-   if (loading) return <Loading></Loading>;
-
+  if (loading) return <Loading></Loading>;
 
   return (
     <div className="w-11/12 mx-auto my-5 p-6 sm:p-8 md:p-10 backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl">
+      <Helmet>
+        <title>My Products | TechLooma</title>
+      </Helmet>
+
       <h2 className="text-2xl font-bold text-center mb-6 text-primary">
         My Products
       </h2>

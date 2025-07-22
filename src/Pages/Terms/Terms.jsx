@@ -7,7 +7,7 @@ const Terms = () => {
       <Helmet>
         <title>Terms | TechLooma</title>
       </Helmet>
-      <div className="max-w-4xl mx-auto mt-20 px-3 lg:px-0">
+      <div className="w-10/12 mx-auto mt-20">
         <h2 className="text-3xl font-bold text-[#22c55e] mb-4 text-center md:text-left">
           Terms and Conditions
         </h2>

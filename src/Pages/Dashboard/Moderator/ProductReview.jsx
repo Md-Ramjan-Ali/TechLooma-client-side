@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router";
 import Loading from "../../../Components/Loading/Loading";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ProductReview = () => {
   const axiosSecure = useAxiosSecure();
@@ -85,6 +86,10 @@ const ProductReview = () => {
 
   return (
     <div className="w-11/12 mx-auto my-5 overflow-x-auto px-4 py-8 backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl">
+      <Helmet>
+        <title>Product Review | TechLooma</title>
+      </Helmet>
+
       <h2 className="text-2xl text-center font-bold mb-10">
         Product Review Queue
       </h2>
@@ -133,7 +138,10 @@ const ProductReview = () => {
                 </button>
               </td>
               <td className="space-x-2">
-                <Link to={`/products/${p._id}`} className="btn btn-sm bg-secondary text-secondary-content">
+                <Link
+                  to={`/product/${p._id}`}
+                  className="btn btn-sm bg-secondary text-secondary-content"
+                >
                   View Details
                 </Link>
               </td>
@@ -142,10 +150,11 @@ const ProductReview = () => {
                   onClick={() => handleUpdateStatus(p._id, "accepted")}
                   disabled={p.status === "accepted"}
                   className={`btn btn-sm  ${
-                    p.status === "accepted" ? "text-green-500" : "btn-success text-secondary-content"
+                    p.status === "accepted"
+                      ? "text-green-500"
+                      : "btn-success text-secondary-content"
                   }`}
                 >
-                  
                   {p.status === "accepted" ? "Accepted" : "Accept"}
                 </button>
               </td>
@@ -154,7 +163,9 @@ const ProductReview = () => {
                   onClick={() => handleUpdateStatus(p._id, "rejected")}
                   disabled={p.status === "rejected"}
                   className={`btn btn-sm  ${
-                    p.status === "rejected" ? "text-red-500" : "bg-red-500 text-secondary-content "
+                    p.status === "rejected"
+                      ? "text-red-500"
+                      : "bg-red-500 text-secondary-content "
                   }`}
                 >
                   {p.status === "rejected" ? "Rejected" : "Reject"}

@@ -9,41 +9,50 @@ import useAuth from "../../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import Lottie from "lottie-react";
-import loginLottie from '../../../assets/Loties/Login.json'
-import ConLottie from '../../../assets/Loties/congratulation.json'
-
+import loginLottie from "../../../assets/Loties/Login.json";
+import ConLottie from "../../../assets/Loties/congratulation.json";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [error,setError]=useState('')
-  const { signInUser,setUser } = useAuth();
-  const navigate=useNavigate()
-  const location=useLocation()
+  const [error, setError] = useState("");
+  const { signInUser, setUser } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const from = location.state?.from || "/";
 
-  const {register,handleSubmit,formState:{errors}}=useForm()
-  const onSubmit=(data)=>{
-
-    signInUser(data.email,data.password).then(result=>{
-      const user=result.user
-          Swal.fire({
-            icon: "success",
-            title: "Login Successfully!",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          setUser(user)
-          setTimeout(() => {
-            navigate(from)
-          }, 1500);
-    }).catch(error=>{
-      setError(error)
-    })
-  }
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    signInUser(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        Swal.fire({
+          icon: "success",
+          title: "Login Successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setUser(user);
+        setTimeout(() => {
+          navigate(from);
+        }, 1500);
+      })
+      .catch((error) => {
+        setError(error);
+      });
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
+      <Helmet>
+        <title>Login | TechLooma</title>
+      </Helmet>
+
       <motion.div
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}

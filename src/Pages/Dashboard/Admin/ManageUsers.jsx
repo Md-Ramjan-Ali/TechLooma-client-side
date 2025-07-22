@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import Loading from "../../../Components/Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -38,6 +39,10 @@ const ManageUsers = () => {
 
   return (
     <div className="w-11/12 mx-auto my-5 p-6 sm:p-8 md:p-10 backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl">
+      <Helmet>
+        <title>Manage User | TechLooma</title>
+      </Helmet>
+
       <h2 className="text-2xl font-bold text-center mb-6 text-primary">
         Manage Users
       </h2>

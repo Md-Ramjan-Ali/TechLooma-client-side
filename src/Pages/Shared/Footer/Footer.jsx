@@ -10,14 +10,16 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router";
 import TechLoomaLogo from "../../../Components/TechLoomaLogo/TechLoomaLogo";
+// import footerLottie from '../../../assets/Loties/circuit background 2.json'
+// import Lottie from "react-lottie-player";
 
 const Footer = () => {
   return (
     <div>
-      <footer className="bg-[#071B2E]/95 text-secondary-content pt-10">
-        <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-5 lg:px-0">
+      <footer className="relative bg-[#071B2E]/95 text-secondary-content pt-10 overflow-hidden">
+        <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-5 lg:px-0">
           {/* Left: Text and Image */}
-          <div>
+          <div className="relative z-10">
             <div className=" space-y-6 mb-10">
               <TechLoomaLogo></TechLoomaLogo>
               <p className="mt-2 text-gray-300 max-w-sm">
@@ -27,7 +29,7 @@ const Footer = () => {
               </p>
             </div>
           </div>
-          <div className="space-y-10">
+          <div className="relative z-10 space-y-10">
             <div className="">
               <h3 className="text-xl font-semibold text-white mb-3">
                 Quick Links
@@ -56,7 +58,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div className="space-y-6">
+          <div className="relative z-10 space-y-6">
             <h3 className="text-xl font-semibold text-white">Follow Us</h3>
             <div className="space-y-5 text-gray-300">
               <div className="flex items-start gap-3">

@@ -1,19 +1,28 @@
 import { motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
 import bannerImage from "../../assets/bannerImage.png";
-
-import Lottie from "lottie-react";
 import bannerAnimation from "../../assets/Loties/Background looping animation.json";
+import Lottie from "react-lottie-player";
+
 
 const Banner = () => {
   return (
-    <section className="relative w-full h-[100vh] bg-[#071B2E] text-secondary-content overflow-hidden">
+    <section className="relative w-full h-[70vh] md:h-[100vh] bg-[#071B2E] text-secondary-content overflow-hidden">
       {/* Lottie background */}
       <Lottie
+        loop
+        play
         animationData={bannerAnimation}
-        loop={true}
-        autoplay={true}
-        className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          objectFit: "cover",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
       />
 
       <div className="relative w-11/12 mx-auto flex flex-col md:flex-row gap-5 justify-between items-center h-full py-3">
@@ -69,7 +78,11 @@ const Banner = () => {
             ease: "easeInOut",
           }}
         >
-          <img className="w-4/5 md:w-full object-cover" src={bannerImage} alt="Banner" />
+          <img
+            className="w-4/5 md:w-full object-cover"
+            src={bannerImage}
+            alt="Banner"
+          />
         </motion.div>
       </div>
     </section>

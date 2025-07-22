@@ -7,7 +7,7 @@ const Privacy = () => {
       <Helmet>
         <title>Privacy | TechLooma</title>
       </Helmet>
-      <div className="w-8/12 mx-auto py-20 px-3 lg:px-0 text-secondary-content">
+      <div className="w-10/12 mx-auto py-20 lg:px-0 text-secondary-content">
         <h2 className="text-3xl font-bold text-primary mb-4 text-center md:text-left">
           Privacy Policy
         </h2>

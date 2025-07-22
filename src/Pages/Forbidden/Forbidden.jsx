@@ -1,10 +1,15 @@
 import { Link } from "react-router";
 import forbidden from "../../assets/Loties/forbidden403.json";
 import Lottie from "lottie-react";
+import { Helmet } from "react-helmet-async";
 
 const Forbidden = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-base-content text-center px-4">
+      <Helmet>
+        <title>Forbidden | TechLooma</title>
+      </Helmet>
+
       <div className="flex justify-center items-center mb-4">
         <Lottie
           className="max-w-xl"

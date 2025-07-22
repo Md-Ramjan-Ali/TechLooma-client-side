@@ -3,7 +3,7 @@ import React from 'react';
 
 const useAxios = () => {
   const axiosInstance = axios.create({
-    baseURL: `http://localhost:5000`,
+    baseURL: `https://tech-looma-server.vercel.app`,
   });
   return axiosInstance
 };

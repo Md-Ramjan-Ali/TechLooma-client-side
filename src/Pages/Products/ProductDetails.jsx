@@ -6,7 +6,16 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import ReviewCard from "./ReviewCard";
 import PostReviewForm from "./PostReviewForm";
-import { FaCalendarAlt, FaCaretUp, FaExternalLinkAlt, FaFlag, FaHeart, FaRegHeart, FaThumbsUp } from "react-icons/fa";
+import {
+  FaCalendarAlt,
+  FaCaretUp,
+  FaExternalLinkAlt,
+  FaFlag,
+  FaHeart,
+  FaRegHeart,
+  FaThumbsUp,
+} from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -109,6 +118,10 @@ const ProductDetails = () => {
 
   return (
     <section className="p-6 w-9/12 mx-auto">
+      <Helmet>
+        <title>Details | TechLooma</title>
+      </Helmet>
+
       {/* Product Section */}
       <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl p-4 mb-8 flex flex-col md:flex-row gap-8">
         {/* Product Image */}
@@ -171,7 +184,7 @@ const ProductDetails = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
               <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl p-3 text-secondary-content text-center">
                 <div className="flex items-center justify-center gap-2 ">
-                  <FaThumbsUp className="text-primary"/>
+                  <FaThumbsUp className="text-primary" />
                   <span className="font-medium">Votes</span>
                 </div>
                 <div className="text-2xl font-bold ">{vote}</div>
@@ -179,7 +192,7 @@ const ProductDetails = () => {
 
               <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl p-3 text-secondary-content text-center">
                 <div className="flex items-center justify-center gap-2 ">
-                  <FaFlag className="text-red-500"/>
+                  <FaFlag className="text-red-500" />
                   <span className="font-medium">Reports</span>
                 </div>
                 <div className="text-2xl font-bold ">{reportCount || 0}</div>
@@ -187,7 +200,7 @@ const ProductDetails = () => {
 
               <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl p-3 text-secondary-content text-center">
                 <div className="flex items-center justify-center gap-2 ">
-                  <FaCalendarAlt className="text-primary"/>
+                  <FaCalendarAlt className="text-primary" />
                   <span className="font-medium">Created</span>
                 </div>
                 <div className="text-sm font-medium ">{formattedDate}</div>
