@@ -29,7 +29,7 @@ const ReviewCard = ({ review }) => {
           className="w-16 h-16 rounded-md object-cover"
         />
         <div className="flex flex-col justify-start">
-          <p className="">
+          <p className="line-clamp-2">
             {description}
           </p>
           <p className="">

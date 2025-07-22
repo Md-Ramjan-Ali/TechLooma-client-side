@@ -10,8 +10,6 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router";
 import TechLoomaLogo from "../../../Components/TechLoomaLogo/TechLoomaLogo";
-// import footerLottie from '../../../assets/Loties/circuit background 2.json'
-// import Lottie from "react-lottie-player";
 
 const Footer = () => {
   return (
@@ -105,7 +103,7 @@ const Footer = () => {
                 <FaInstagram />
               </a>
               <a
-                href="www.linkedin.com/in/md-ramjan-ali-1bb369324"
+                href="www.linkedin.com/in/md-ramjan-ali-khan"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white"
@@ -118,7 +116,7 @@ const Footer = () => {
 
         {/* Bottom Line */}
         <div className="bg-[#071B2E]/95 border-t-1 border-primary/10 text-gray-500 text-center mt-5 py-5">
-          © {new Date().getFullYear()} TechLooma | Apps Launch Platform. All
+          © {new Date().getFullYear()} TechLooma | A Tech Launch Platform. All
           rights reserved.
         </div>
       </footer>

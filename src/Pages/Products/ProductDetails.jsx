@@ -117,7 +117,7 @@ const ProductDetails = () => {
   });
 
   return (
-    <section className="p-6 w-9/12 mx-auto">
+    <section className="p-5 w-full md:w-9/12 mx-auto">
       <Helmet>
         <title>Details | TechLooma</title>
       </Helmet>
@@ -134,7 +134,7 @@ const ProductDetails = () => {
             />
           </div>
           {/* Owner Card */}
-          <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl p-5 text-secondary-content">
+          <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl p-5 text-secondary-content overflow-scroll">
             <h2 className="text-xl font-semibold mb-4">Product Owner</h2>
             <div className="flex items-center gap-4">
               <img
@@ -181,7 +181,7 @@ const ProductDetails = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl p-3 text-secondary-content text-center">
                 <div className="flex items-center justify-center gap-2 ">
                   <FaThumbsUp className="text-primary" />
@@ -271,7 +271,7 @@ const ProductDetails = () => {
 
       {/* Reviews Section */}
       <div className="my-8">
-        <h2 className="text-2xl font-semibold mb-4 text-secondary-content text-center bg-primary w-fit mx-auto px-10 py-3 rounded-tl-full rounded-br-full">
+        <h2 className="text-xl md:text-2xl font-semibold mb-4 text-secondary-content text-center bg-primary w-fit mx-auto px-10 py-3 rounded-tl-full rounded-br-full">
           Reviews
         </h2>
         <div className="grid grid-cols-1 gap-4">
