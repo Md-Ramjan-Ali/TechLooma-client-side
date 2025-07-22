@@ -50,7 +50,7 @@ const SubscribeModal = ({ setShowModal, user }) => {
               onClick={() => {
                 handleApplyCoupon();
               }}
-              className="btn bg-primary text-black hover:bg-secondary"
+              className="btn bg-secondary text-secondary-content hover:bg-secondary"
             >
               Apply
             </button>
@@ -70,11 +70,6 @@ const SubscribeModal = ({ setShowModal, user }) => {
             Total:{" "}
             <span className="font-bold text-primary">${finalPrice / 100}</span>
           </p>
-          {/* {discount > 0 && (
-            <p className="text-sm text-green-500">
-              Coupon Discount: -${discount / 100}
-            </p>
-          )} */}
           {discount > 0 && (
             <p className="text-sm text-green-500">
               Coupon Discount: -{Math.round((discount / originalPrice) * 100)}%

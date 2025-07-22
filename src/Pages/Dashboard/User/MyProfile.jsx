@@ -49,11 +49,11 @@ const MyProfile = () => {
           <div className="flex flex-col items-center gap-5 py-5">
             <button
               onClick={() => setShowModal(true)}
-              className="btn btn-primary mt-4 text-black"
+              className="btn btn-secondary mt-4 text-secondary-content"
             >
               Subscribe - $9.99
             </button>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-secondary-content">
               Get unlimited product access
             </p>
           </div>

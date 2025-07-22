@@ -74,7 +74,9 @@ const PostReviewForm = ({ productId, refetchReviews }) => {
           name="rating"
           control={control}
           defaultValue={0}
-          rules={{ required: true }}
+          rules={{
+            validate: (value) => value > 0 || "Rating is required",
+          }}
           render={({ field }) => (
             <Rating
               emptySymbol={<FaRegStar className="text-yellow-400 text-xl" />}
@@ -85,11 +87,14 @@ const PostReviewForm = ({ productId, refetchReviews }) => {
             />
           )}
         />
-        {errors.rating?.rules==='required' && (
+        {errors.rating?.rules === "required" && (
           <p className="text-red-500 text-sm mt-1">Rating is required</p>
         )}
       </div>
-      <button type="submit" className="btn bg-secondary text-secondary-content border-0 outline-0 ">
+      <button
+        type="submit"
+        className="btn bg-secondary text-secondary-content border-0 outline-0 "
+      >
         Submit Review
       </button>
     </form>

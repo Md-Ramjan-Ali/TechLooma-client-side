@@ -1,15 +1,15 @@
-# 🛰️ AppOrbit – A Product Hunt Style Tech Launch Platform
+# 🛰️ TechLooma – A Tech Launch Platform
 
-**🔗 Live Site**: [https://apporbit.tech](https://apporbit.tech)  
-**📁 Client Repository**: [https://github.com/Md-Ramjan-Ali/AppOrbit-Client](https://github.com/Md-Ramjan-Ali/AppOrbit-Client)  
-**📁 Server Repository**: [https://github.com/Md-Ramjan-Ali/AppOrbit-Server](https://github.com/Md-Ramjan-Ali/AppOrbit-Server)
+**🔗 Live Site**: [https://TechLooma.tech](https://TechLooma.tech)  
+**📁 Client Repository**: [https://github.com/Md-Ramjan-Ali/TechLooma-Client](https://github.com/Md-Ramjan-Ali/TechLooma-Client)  
+**📁 Server Repository**: [https://github.com/Md-Ramjan-Ali/TechLooma-Server](https://github.com/Md-Ramjan-Ali/TechLooma-Server)
 
 
 ---
 
 ## 📌 Project Purpose
 
-**AppOrbit** is a full-stack MERN web application inspired by platforms like Product Hunt. It enables users to discover, launch, and promote tech products. Users can vote, review, subscribe, and report products, while moderators and admins manage content, users, and statistics.
+**TechLooma** is a full-stack MERN web application inspired by platforms like Product Hunt. It enables users to discover, launch, and promote tech products. Users can vote, review, subscribe, and report products, while moderators and admins manage content, users, and statistics.
 
 ---
 
@@ -89,5 +89,5 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/AppOrbit.git
-   cd AppOrbit
+   git clone https://github.com/your-username/TechLooma.git
+   cd TechLooma
