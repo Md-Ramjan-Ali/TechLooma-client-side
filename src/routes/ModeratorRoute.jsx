@@ -12,7 +12,7 @@ const ModeratorRoute = ({ children }) => {
 
   if (user && role === "moderator") return children;
 
-  return <Navigate to="/" />;
+  return <Navigate to="/forbidden" />;
 };
 
 export default ModeratorRoute;

@@ -12,7 +12,7 @@ const AdminRoute = ({ children }) => {
   if (loading || isLoading) return <Loading></Loading>
 
   if (user && role === "admin") return children;
-  return <Navigate to="/" />;
+  return <Navigate to="/forbidden" />;
 };
 
 export default AdminRoute;
