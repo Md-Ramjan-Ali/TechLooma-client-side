@@ -68,7 +68,7 @@ const ReportedContents = () => {
           <thead>
             <tr className="bg-error text-white">
               <th>No.</th>
-              <th>Product</th>
+              <th>Product Name</th>
               <th>Report Count</th>
               <th>Actions</th>
             </tr>

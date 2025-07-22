@@ -15,6 +15,7 @@ import {
 import useUserRole from "../hooks/useUserRole";
 
 import "../Styles/dashboard.css";
+import { ToastContainer } from "react-toastify";
 
 const DashboardLayout = () => {
   const { role, isLoading } = useUserRole();
@@ -137,6 +138,7 @@ const DashboardLayout = () => {
           )}
         </ul>
       </div>
+      <ToastContainer/>
     </div>
   );
 };

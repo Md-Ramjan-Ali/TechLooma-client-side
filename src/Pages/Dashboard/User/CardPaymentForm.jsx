@@ -75,7 +75,7 @@ const CardPaymentForm = ({ price, email, setShowModal }) => {
       <CardElement className="p-2  border rounded bg-white " />
       <button
         type="submit"
-        className="btn btn-primary w-full text-black"
+        className="btn btn-secondary w-full text-secondary-content"
         disabled={!stripe || loading}
       >
         {loading ? "Processing..." : `Pay $${price / 100}`}

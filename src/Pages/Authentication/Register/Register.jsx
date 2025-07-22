@@ -32,7 +32,11 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    // password validation
+  //  profile pic validation
+    if (!profilePic) {
+      toast.error("Please upload your profile photo");
+      return;
+    }
     //password validation
     const upper = /[A-Z]/.test(data.password);
     const lower = /[a-z]/.test(data.password);
@@ -206,7 +210,6 @@ const Register = () => {
                 <input
                   type="file"
                   onChange={handleImageUpload}
-                  {...register("file", { required: true })}
                   accept="image/*"
                   className="w-full text-primary-content file:mr-4 file:py-1 file:px-3 
                  file:rounded-full file:border-0 file:text-sm 

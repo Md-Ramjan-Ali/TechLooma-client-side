@@ -11,6 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import { Link } from "react-router";
 import { Helmet } from "react-helmet-async";
+import { toast } from "react-toastify";
 
 const AddProduct = () => {
   const { user } = useAuth();
@@ -40,6 +41,12 @@ const AddProduct = () => {
   });
 
   const onSubmit = async (data) => {
+    // validate product pic
+    if (!productPic) {
+      toast.error("Please upload your profile photo");
+      return;
+    }
+    
     setLoading(true);
     try {
       // Limit post product
@@ -142,7 +149,6 @@ const AddProduct = () => {
           <div className="flex items-center border-b border-primary-content px-2 py-2 group-focus-within:border-primary transition-all duration-300">
             <input
               type="file"
-              {...register("image", { required: true })}
               onChange={handleImageUpload}
               accept="image/*"
               className="w-full text-primary-content file:mr-4 file:py-1 file:px-3 
@@ -153,11 +159,6 @@ const AddProduct = () => {
               <FaImage />
             </span>
           </div>
-          {errors.image && (
-            <span className="text-red-500 text-sm">
-              Product image is required
-            </span>
-          )}
         </div>
 
         {/* Description */}

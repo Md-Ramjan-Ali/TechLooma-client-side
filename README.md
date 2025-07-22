@@ -1,8 +1,8 @@
 # 🛰️ TechLooma – A Tech Launch Platform
 
-**🔗 Live Site**: [https://TechLooma.tech](https://TechLooma.tech)  
-**📁 Client Repository**: [https://github.com/Md-Ramjan-Ali/TechLooma-Client](https://github.com/Md-Ramjan-Ali/TechLooma-Client)  
-**📁 Server Repository**: [https://github.com/Md-Ramjan-Ali/TechLooma-Server](https://github.com/Md-Ramjan-Ali/TechLooma-Server)
+**🔗 Live Site**: [Live Link](https://techlooma-359e0.web.app/)  
+**📁 Client Repository**: [TechLooma Client](https://github.com/Programming-Hero-Web-Course4/b11a12-client-side-Md-Ramjan-Ali)  
+**📁 Server Repository**: [TechLooma Server](https://github.com/Programming-Hero-Web-Course4/b11a12-server-side-Md-Ramjan-Ali)
 
 
 ---
