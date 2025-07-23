@@ -21,9 +21,9 @@ const FeaturedProducts = () => {
 
   return (
     <section className="py-16 text-secondary-content px-2">
-      <div className="w-11/12 mx-auto">
+      <div className="max-w-screen-xl mx-auto">
         <div className=" bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-tl-full rounded-br-full mb-10">
-          <div className="w-8/12 mx-auto py-5 text-center space-y-3">
+          <div className="w-10/12 mx-auto py-5 text-center space-y-3">
             <h2 className="text-xl md:text-4xl font-bold text-center flex items-center justify-center gap-3">
               <FaCrown className="text-primary" />
               Featured Products

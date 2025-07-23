@@ -22,7 +22,7 @@ const CouponSlider = () => {
   }
 
   return (
-    <section className="py-10">
+    <section className="py-10 max-w-screen-xl mx-auto">
       <CouponCard coupons={coupons}></CouponCard>
     </section>
   );

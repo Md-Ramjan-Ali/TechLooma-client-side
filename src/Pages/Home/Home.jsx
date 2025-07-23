@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   return (
-    <div className="text-secondary-content bg-base-content">
+    <div className="text-secondary-content bg-base-content overflow-hidden">
       <Helmet>
         <title>Home | TechLooma</title>
       </Helmet>

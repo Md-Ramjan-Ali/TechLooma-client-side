@@ -22,9 +22,9 @@ const TrendingProducts = () => {
 
   return (
     <section className="py-10 text-secondary-content px-2">
-      <div className="w-11/12 mx-auto">
+      <div className="max-w-screen-xl mx-auto">
         <div className=" bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-tl-full rounded-br-full mb-10">
-          <div className="w-8/12 mx-auto py-5 text-center space-y-3">
+          <div className="w-10/12 mx-auto py-5 text-center space-y-3">
             <h2 className="text-xl md:text-4xl font-bold text-center flex items-center justify-center gap-2">
               <FaFire className="text-red-500" />
               Trending Products
@@ -36,9 +36,8 @@ const TrendingProducts = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {trending.map((product) => (
-            // <ProductCard key={product._id} product={product} />
             <TrendingProductCard
               key={product._id}
               product={product}

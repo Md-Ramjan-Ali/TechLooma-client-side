@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { FaCaretUp, FaCrown } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
@@ -48,7 +49,15 @@ const FeatureCard = ({ product, refetch }) => {
   };
 
   return (
-    <div className="relative backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl flex flex-col h-full transform hover:-translate-y-1">
+    <motion.div
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.98 }}
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: false }}
+      className="relative backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl flex flex-col h-full"
+    >
       {/* Product Image with Hover Effect */}
       <div className=" overflow-hidden h-64">
         <img
@@ -68,7 +77,7 @@ const FeatureCard = ({ product, refetch }) => {
                 {name}
               </Link>
             </h2>
-            <p className="text-sm text-gray-500 -mt-2">By {ownerName}</p>
+            <p className="text-sm text-gray-300 -mt-2">By {ownerName}</p>
           </div>
           {/* Vote Button */}
 
@@ -112,7 +121,7 @@ const FeatureCard = ({ product, refetch }) => {
       <p className="absolute top-3 left-3">
         <FaCrown className="text-amber-500 text-2xl" />
       </p>
-    </div>
+    </motion.div>
   );
 };
 

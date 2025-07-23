@@ -11,7 +11,6 @@ const Products = () => {
   const axiosInstance = useAxios();
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
 
   const {
     data = {},
@@ -23,7 +22,6 @@ const Products = () => {
       const res = await axiosInstance.get(
         `/products/accepted?search=${searchText}&page=${page}`
       );
-      setLoading(false);
       return res.data;
     },
   });
@@ -36,12 +34,12 @@ const Products = () => {
     refetch();
   };
 
-  if (loading || isLoading) {
+  if (isLoading) {
     return <Loading></Loading>;
   }
 
   return (
-    <div className="w-11/12 mx-auto px-2 py-10">
+    <div className="max-w-screen-xl mx-auto px-2 py-10">
       <Helmet>
         <title>Products | TechLooma</title>
       </Helmet>
@@ -56,7 +54,10 @@ const Products = () => {
             type="text"
             placeholder="Search by tags..."
             value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
+            onChange={(e) => {
+              
+              setSearchText(e.target.value);
+            }}
             className="relative input focus:outline-0 rounded-tl-full rounded-bl-full w-full  lg:pl-15  py-6 backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] text-secondary-content"
           />
           <span className="absolute  top-1/2 left-6 transform -translate-y-1/2 text-xl z-20 hidden md:block">
@@ -73,7 +74,7 @@ const Products = () => {
       </form>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mb-10">
         {products.map((product) => (
           <ProductCard key={product._id} product={product} refetch={refetch} />
         ))}

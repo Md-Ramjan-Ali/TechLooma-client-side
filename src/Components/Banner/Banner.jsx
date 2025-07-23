@@ -28,9 +28,10 @@ const Banner = () => {
       <div className="relative w-11/12 mx-auto flex flex-col md:flex-row gap-5 justify-between items-center h-full py-3">
         {/* Left side - Title Section */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: false }}
           className="w-full md:w-1/2 z-10 space-y-3 text-center md:text-start"
         >
           {/* Badge */}
@@ -54,12 +55,12 @@ const Banner = () => {
           </button>
 
           {/* Features */}
-          <div className="flex  gap-5">
-            <div className="flex items-center space-x-2">
+          <div className="flex justify-center lg:justify-start gap-3">
+            <div className="flex items-center space-x-1">
               <FaCheckCircle className="text-green-400 text-lg" />
               <span>Innovative Solutions</span>
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1">
               <FaCheckCircle className="text-green-400 text-lg" />
               <span>Reliable & Secure</span>
             </div>

@@ -9,23 +9,29 @@ import { Link } from "react-router";
 const AboutMe = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-[#0f0f0f] via-[#1f2937] to-[#0f0f0f] px-6 py-5">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-7xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-screen-xl">
         {/* Image */}
         <motion.img
           src={aboutImage}
           alt="Tech discussion"
           className="w-full max-w-md mx-auto object-contain"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.98 }}
+          initial={{ opacity: 0, x: -150 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 2 }}
+          viewport={{ once: false }}
         />
 
         {/* Text content */}
         <motion.div
           className="text-white space-y-5"
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.98 }}
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 2 }}
+          viewport={{ once: false }}
         >
           <p className="uppercase tracking-widest text-sm text-white/60">
             Who We Are

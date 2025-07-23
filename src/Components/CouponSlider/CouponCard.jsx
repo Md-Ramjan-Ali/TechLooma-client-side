@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -48,7 +49,14 @@ const CouponCard = ({ coupons }) => {
   };
 
   return (
-    <div className="py-2 px-2">
+    <motion.div
+      
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: false }}
+      className="py-2 px-2"
+    >
       <h2 className="text-3xl font-bold mb-8 text-center text-secondary-content">
         Exclusive <span className="text-primary">Discounts</span>
       </h2>
@@ -57,17 +65,18 @@ const CouponCard = ({ coupons }) => {
         spaceBetween={30}
         slidesPerView={1}
         breakpoints={{
-          640: { slidesPerView: 2 },
+          640: { slidesPerView: 1 },
+          800: { slidesPerView: 2 },
           1024: { slidesPerView: 2 },
         }}
         autoplay={{ delay: 3500, disableOnInteraction: false }}
         loop={true}
         modules={[Autoplay]}
-        className="w-11/12 mx-auto rounded-xl"
+        className="rounded-xl"
       >
         {coupons.map((coupon) => (
           <SwiperSlide key={coupon._id}>
-            <div className="relative bg-[#071B2E] text-secondary-content border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl overflow-hidden  h-full">
+            <div className="relative bg-[#071B2E] text-secondary-content border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl overflow-hidden h-full">
               {/* Ribbon */}
               <div className="absolute top-0 right-0 bg-primary  px-4 py-1 text-xs font-bold transform rotate-45 translate-x-8 translate-y-4 w-32 text-center">
                 {parseFloat(coupon.discount) * 100}% OFF
@@ -90,7 +99,9 @@ const CouponCard = ({ coupons }) => {
                 </div>
 
                 {/* Coupon Description */}
-                <p className=" mb-4 line-clamp-2">{coupon.description}</p>
+                <p className=" mb-4 line-clamp-2 h-[60px]">
+                  {coupon.description}
+                </p>
 
                 {/* Progress Bar */}
                 <div className="mb-4">
@@ -121,7 +132,7 @@ const CouponCard = ({ coupons }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </motion.div>
   );
 };
 

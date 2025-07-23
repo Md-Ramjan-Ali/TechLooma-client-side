@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import useAxios from "../../hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -38,21 +39,42 @@ const CustomersReview = () => {
 
   return (
     <section className="px-2 py-12 bg-[#071B2E] ">
-      <div className="w-11/12 mx-auto">
-        <div className="md:flex justify-between items-start mb-10 text-secondary-content">
-          <div>
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 3 }}
+        viewport={{ once: false }}
+        className="max-w-screen-xl mx-auto"
+      >
+        <div className="md:flex justify-between items-start mb-10 text-secondary-content  px-4">
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            initial={{ opacity: 0, x: -150 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: false }}
+          >
             <span className="bg-primary text-xs font-medium px-3 py-1 rounded-tl-2xl rounded-br-2xl uppercase mb-2 inline-block">
               Reviews
             </span>
             <h2 className="text-4xl font-bold leading-snug">
               Hear From Our <br /> Satisfied Customers
             </h2>
-          </div>
-          <p className="max-w-md mt-6 md:mt-0">
+          </motion.div>
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: false }}
+            className="max-w-md mt-6 md:mt-0"
+          >
             See how real users are benefiting from our platform — sharing
             experiences, building trust, and achieving success with our
             solutions.
-          </p>
+          </motion.div>
         </div>
 
         <Swiper
@@ -123,7 +145,7 @@ const CustomersReview = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
+      </motion.div>
     </section>
   );
 };
