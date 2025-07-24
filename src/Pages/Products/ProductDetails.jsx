@@ -134,7 +134,7 @@ const ProductDetails = () => {
             />
           </div>
           {/* Owner Card */}
-          <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl p-5 text-secondary-content overflow-scroll">
+          <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl p-5 text-secondary-content overflow-scroll md:overflow-hidden">
             <h2 className="text-xl font-semibold mb-4">Product Owner</h2>
             <div className="flex items-center gap-4">
               <img

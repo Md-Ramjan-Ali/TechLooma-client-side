@@ -19,10 +19,15 @@ const Products = () => {
   } = useQuery({
     queryKey: ["accepted-products", searchText, page],
     queryFn: async () => {
-      const res = await axiosInstance.get(
-        `/products/accepted?search=${searchText}&page=${page}`
-      );
-      return res.data;
+      try {
+        const res = await axiosInstance.get(
+          `/products/accepted?search=${searchText}&page=${page}`
+        );
+        return res.data;
+      } catch (error) {
+        console.log(error);
+        return []
+      }
     },
   });
 
@@ -30,6 +35,8 @@ const Products = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    const form = e.target;
+    setSearchText(form.searchText.value);
     setPage(1);
     refetch();
   };
@@ -52,12 +59,9 @@ const Products = () => {
         <div className="relative w-full max-w-5xl">
           <input
             type="text"
+            name="searchText"
             placeholder="Search by tags..."
-            value={searchText}
-            onChange={(e) => {
-              
-              setSearchText(e.target.value);
-            }}
+            defaultValue={searchText}
             className="relative input focus:outline-0 rounded-tl-full rounded-bl-full w-full  lg:pl-15  py-6 backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] text-secondary-content"
           />
           <span className="absolute  top-1/2 left-6 transform -translate-y-1/2 text-xl z-20 hidden md:block">
