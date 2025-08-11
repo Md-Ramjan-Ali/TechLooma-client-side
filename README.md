@@ -87,7 +87,25 @@
 
 ## 🛠️ Setup Instructions
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/TechLooma.git
-   cd TechLooma
+🚀 Getting Started  
+Follow these steps to set up the A Tech Launch Platform Website locally:
+
+1. Clone the repository:  
+```bash
+git clone https://github.com/Md-Ramjan-Ali/TechLooma-client-side
+```
+2. Navigate to the project folder:
+```bash
+cd TechLooma-client-side
+```
+3.Install dependencies:
+```bash
+npm install
+```
+4.Run the development server:
+```bash
+npm start
+```
+5.Open http://localhost:3000 in your browser to see the app in action.
+
+If you want, I can help you add more sections like Features, Tech Stack, or Usage!
