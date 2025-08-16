@@ -94,7 +94,7 @@ const NewsletterSection = () => {
           </div>
 
           {/* Right Side - Form */}
-          <div className="lg:flex lg:justify-center">
+          <div className="sm:flex sm:justify-center">
             <div className="w-full max-w-md">
               {!isSubscribed ? (
                 <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-3 md:p-8 border border-white/20 shadow-2xl">
