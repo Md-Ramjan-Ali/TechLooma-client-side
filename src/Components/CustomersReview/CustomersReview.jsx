@@ -38,7 +38,7 @@ const CustomersReview = () => {
   }
 
   return (
-    <section className="px-2 py-12 bg-[#071B2E] ">
+    <section className="px-2 py-12 bg-[#071B2E] overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -92,14 +92,14 @@ const CustomersReview = () => {
           spaceBetween={30}
           slidesPerView={2}
           breakpoints={{
-            350: {
+            0: {
               slidesPerView: 1,
               grid: {
                 rows: 1,
               },
             },
             640: {
-              slidesPerView: 1,
+              slidesPerView: 2,
               grid: {
                 rows: 1,
               },
@@ -115,16 +115,16 @@ const CustomersReview = () => {
           {reviews.map((review) => (
             <SwiperSlide key={review._id}>
               <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl flex flex-col text-secondary-content h-[180px]">
-                <div className="flex justify-between mb-4 border-b-1 border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] p-4">
-                  <h4 className="font-bold  capitalize">
+                <div className="flex justify-between mb-4 border-b-1 border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] p-4 space-x-2">
+                  <h4 className="sm:font-bold  capitalize overflow-hidden line-clamp-1">
                     {review.reviewerName}
                   </h4>
-                  <span className="text-sm capitalize">
+                  <span className="text-xs sm:text-sm capitalize line-clamp-1">
                     {review.reviewerRole} Review
                   </span>
                 </div>
 
-                <div className="flex gap-4 items-start px-5 pb-5">
+                <div className="flex gap-4 items-start px-5 pb-5 overflow-hidden">
                   <img
                     src={review.reviewerImage}
                     alt={review.reviewerName}

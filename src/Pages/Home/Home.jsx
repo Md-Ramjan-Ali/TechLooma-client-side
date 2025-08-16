@@ -6,6 +6,7 @@ import CouponSlider from "../../Components/CouponSlider/CouponSlider";
 import AboutMe from "../../Components/AboutMe/AboutMe";
 import CustomersReview from "../../Components/CustomersReview/CustomersReview";
 import { Helmet } from "react-helmet-async";
+import NewsletterSection from "../../Components/NewsletterSignup/NewsletterSignup";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
       <TrendingProducts></TrendingProducts>
       <CouponSlider></CouponSlider>
       <AboutMe></AboutMe>
+      <NewsletterSection></NewsletterSection>
       <CustomersReview></CustomersReview>
     </div>
   );
