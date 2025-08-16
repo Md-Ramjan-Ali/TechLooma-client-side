@@ -105,15 +105,23 @@ const TrendingProductCard = ({ product, refetch }) => {
           </button>
         </div>
         {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-3">
-          {tags?.map((tag, i) => (
-            <span
-              key={i}
-              className="px-3 py-1 bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl text-xs font-medium"
+        <div className="flex flex-wrap gap-2">
+          {tags?.slice(0, 1).map((tag, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
+              className="px-3 py-1 bg-slate-800/50 border border-slate-700/50 rounded-lg text-xs text-slate-300 hover:bg-slate-700/50 transition-colors cursor-pointer"
             >
               #{tag}
-            </span>
+            </motion.span>
           ))}
+          {tags?.length > 1 && (
+            <span className="px-3 py-1 bg-slate-800/50 border border-slate-700/50 rounded-lg text-xs text-slate-400">
+              +{tags.length - 1} more
+            </span>
+          )}
         </div>
         <p className="line-clamp-2 mt-3">{description}</p>
       </div>
