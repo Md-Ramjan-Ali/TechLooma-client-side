@@ -26,6 +26,7 @@ import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
 import Terms from "../Pages/Terms/Terms";
 import Privacy from "../Pages/Privacy/Privacy";
+import UpcomingProducts from "../Pages/UpcomingProducts/UpcomingProducts";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
         Component: Products,
       },
       {
+        path: "/upcomingProducts",
+       Component: UpcomingProducts,
+      },
+      {
         path: "/product/:id",
         element: (
           <PrivetRouter>
@@ -49,24 +54,24 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: '/about',
-        Component: About
+        path: "/about",
+        Component: About,
       },
       {
-        path: '/contact',
-        Component: Contact
+        path: "/contact",
+        Component: Contact,
       },
       {
-        path: '/terms',
-        Component: Terms
+        path: "/terms",
+        Component: Terms,
       },
       {
-        path: '/privacy',
-        Component: Privacy
+        path: "/privacy",
+        Component: Privacy,
       },
       {
-        path: '/forbidden',
-        Component: Forbidden
+        path: "/forbidden",
+        Component: Forbidden,
       },
     ],
   },
@@ -78,10 +83,9 @@ export const router = createBrowserRouter([
       </PrivetRouter>
     ),
     children: [
-
       {
         index: true,
-        Component: Dashboard
+        Component: Dashboard,
       },
 
       // user panel routes
