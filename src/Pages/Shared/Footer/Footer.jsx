@@ -15,7 +15,14 @@ const Footer = () => {
   return (
     <div>
       <footer className="relative bg-[#071B2E]/95 text-secondary-content pt-10 overflow-hidden">
-        <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-5 lg:px-0">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-500/5 rounded-full blur-2xl animate-ping"></div>
+        </div>
+
+        <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-5 lg:px-0 relative z-10">
           {/* Left: Text and Image */}
           <div className="relative z-10">
             <div className=" space-y-6 mb-10">
@@ -77,6 +84,16 @@ const Footer = () => {
                 <p>+88 01928-294516</p>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Bottom Line */}
+        <div className="  bg-[#071B2E]/95 border-t-1 border-primary/10 text-gray-500 mt-5 py-5 relative z-10">
+          <div className="max-w-screen-xl mx-auto flex justify-between items-center">
+            <div className="">
+              © {new Date().getFullYear()} TechLooma | A Tech Launch Platform.
+              All rights reserved.
+            </div>
             <div className="flex gap-4 text-gray-300 text-lg">
               <a
                 href="https://www.facebook.com/share/15NASC5RNv/"
@@ -112,12 +129,6 @@ const Footer = () => {
               </a>
             </div>
           </div>
-        </div>
-
-        {/* Bottom Line */}
-        <div className="bg-[#071B2E]/95 border-t-1 border-primary/10 text-gray-500 text-center mt-5 py-5">
-          © {new Date().getFullYear()} TechLooma | A Tech Launch Platform. All
-          rights reserved.
         </div>
       </footer>
     </div>

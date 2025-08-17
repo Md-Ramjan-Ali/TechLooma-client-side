@@ -3,6 +3,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import bannerImage from "../../assets/bannerImage.png";
 import bannerAnimation from "../../assets/Loties/Background looping animation.json";
 import Lottie from "react-lottie-player";
+import { Link } from "react-router";
 
 
 const Banner = () => {
@@ -50,9 +51,11 @@ const Banner = () => {
           </p>
 
           {/* CTA Button */}
-          <button className=" bg-secondary hover:bg-primary text-secondary-content font-bold py-3 px-6 rounded-tl-3xl rounded-br-3xl shadow-xl transition duration-300 cursor-pointer">
-            Get Started
-          </button>
+          <Link to='/dashboard'>
+            <button className=" bg-secondary hover:bg-primary text-secondary-content font-bold py-3 px-6 rounded-tl-3xl rounded-br-3xl shadow-xl transition duration-300 cursor-pointer mb-2">
+              Get Started
+            </button>
+          </Link>
 
           {/* Features */}
           <div className="flex justify-center lg:justify-start gap-3">

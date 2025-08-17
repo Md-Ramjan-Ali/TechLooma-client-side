@@ -30,7 +30,7 @@ const BehindTheScenes = () => {
       role: "Founder & CEO",
       bio: "Former Product Manager at Google. Passionate about connecting innovators with their audience.",
       image:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face",
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
       location: "San Francisco, CA",
       joinDate: "Jan 2023",
       achievements: ["Forbes 30 Under 30", "Y Combinator Alumni"],
@@ -429,7 +429,9 @@ const BehindTheScenes = () => {
             {/* Team Testimonials Slider */}
             <div className="p-8 text-center backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl text-secondary-content hover:shadow-xl transition-all duration-300">
               <div className="text-center mb-8">
-                <h3 className="text-xl md:text-2xl font-bold  mb-2">What Our Team Says</h3>
+                <h3 className="text-xl md:text-2xl font-bold  mb-2">
+                  What Our Team Says
+                </h3>
                 <p className="">
                   Hear directly from the people building TechLooma
                 </p>
@@ -491,9 +493,7 @@ const BehindTheScenes = () => {
                 <div className="text-3xl font-bold text-purple-600 mb-2">
                   24☕
                 </div>
-                <div className="text-sm">
-                  Cups of coffee per day
-                </div>
+                <div className="text-sm">Cups of coffee per day</div>
               </div>
               <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl p-6 text-center text-secondary-content">
                 <div className="text-3xl font-bold text-blue-600 mb-2">
@@ -503,17 +503,13 @@ const BehindTheScenes = () => {
               </div>
               <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl p-6 text-center text-secondary-content">
                 <div className="text-3xl font-bold text-green-600 mb-2">15</div>
-                <div className="text-sm ">
-                  Countries represented
-                </div>
+                <div className="text-sm ">Countries represented</div>
               </div>
               <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl p-6 text-center text-secondary-content">
                 <div className="text-3xl font-bold text-pink-600 mb-2">
                   100%
                 </div>
-                <div className="text-sm ">
-                  Remote-first culture
-                </div>
+                <div className="text-sm ">Remote-first culture</div>
               </div>
             </div>
           </div>

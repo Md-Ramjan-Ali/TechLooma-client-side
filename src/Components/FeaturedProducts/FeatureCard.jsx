@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaCaretUp, FaCrown } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
@@ -7,6 +7,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const FeatureCard = ({ product, refetch }) => {
+  const [isHovered, setIsHovered] = useState(false);
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
@@ -50,37 +51,75 @@ const FeatureCard = ({ product, refetch }) => {
 
   return (
     <motion.div
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.98 }}
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1 }}
-      viewport={{ once: false }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{
+        y: -3,
+        boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+      }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
       className="relative backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-xl flex flex-col h-full"
     >
       {/* Product Image with Hover Effect */}
-      <div className=" overflow-hidden h-64">
+      <motion.div
+        animate={{
+          rotate: isHovered ? 360 : 0,
+        }}
+        transition={{ duration: 2, ease: "easeInOut" }}
+        className="overflow-hidden w-full h-full p-5 flex justify-center items-center"
+      >
         <img
           src={productImage}
           alt={name}
-          className="w-full h-full object-center rounded-tl-xl rounded-tr-xl transition-transform duration-500 hover:scale-105"
+          className=" h-40 w-40 object-center rounded-full transition-transform duration-500 hover:scale-105"
         />
-      </div>
+      </motion.div>
 
       {/* Product Content */}
       <div className="p-5 flex-grow flex flex-col space-y-6">
         {/* Product Name */}
-        <div className="flex justify-between items-center">
-          <div className="">
-            <h2 className="text-xl font-bold mb-3 text-blue-600 transition-colors">
-              <Link to={`/product/${_id}`} className="">
+        <div className="flex justify-center">
+          <div className="flex justify-center text-center">
+            <div className="">
+              <h2 className="text-xl md:text-2xl font-bold mb-3 text-secondary-content transition-colors">
                 {name}
-              </Link>
-            </h2>
-            <p className="text-sm text-gray-300 -mt-2">By {ownerName}</p>
+              </h2>
+              <p className="text-sm text-gray-300 -mt-2">By {ownerName}</p>
+            </div>
           </div>
+        </div>
+        {/* Tags */}
+        <div className="flex flex-wrap justify-center gap-2">
+          {tags?.slice(0, 1).map((tag, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
+              className="px-3 py-1 bg-slate-800/50 border border-slate-700/50 rounded-lg text-xs text-slate-300 hover:bg-slate-700/50 transition-colors cursor-pointer"
+            >
+              #{tag}
+            </motion.span>
+          ))}
+          {tags?.length > 1 && (
+            <span className="px-3 py-1 bg-slate-800/50 border border-slate-700/50 rounded-lg text-xs text-slate-400">
+              +{tags.length - 1} more
+            </span>
+          )}
+        </div>
+        <p className="line-clamp-2">{description}</p>
+        <div className="flex justify-between items-center ">
+          <Link
+            to={`/product/${_id}`}
+            onClick={() =>{
+              window.scrollTo(0, 0);
+            }}
+            className="px-4 py-2 bg-secondary text-secondary-content rounded-tr-2xl rounded-bl-2xl cursor-pointer"
+          >
+            Product Details
+          </Link>
           {/* Vote Button */}
-
           <button
             onClick={handleVote}
             disabled={hasVoted || isOwner}
@@ -105,27 +144,14 @@ const FeatureCard = ({ product, refetch }) => {
             <span className="text-sm font-semibold">{vote}</span>
           </button>
         </div>
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2">
-          {tags?.slice(0, 1).map((tag, index) => (
-            <motion.span
-              key={index}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1 }}
-              className="px-3 py-1 bg-slate-800/50 border border-slate-700/50 rounded-lg text-xs text-slate-300 hover:bg-slate-700/50 transition-colors cursor-pointer"
-            >
-              #{tag}
-            </motion.span>
-          ))}
-          {tags?.length > 1 && (
-            <span className="px-3 py-1 bg-slate-800/50 border border-slate-700/50 rounded-lg text-xs text-slate-400">
-              +{tags.length - 1} more
-            </span>
-          )}
-        </div>
-        <p className="line-clamp-2 mt-3">{description}</p>
       </div>
+      {/* Bottom Glow Line */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 "
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: isHovered ? 1 : 0.3 }}
+        transition={{ duration: 0.3 }}
+      />
       <p className="absolute top-3 left-3">
         <FaCrown className="text-amber-500 text-2xl" />
       </p>
