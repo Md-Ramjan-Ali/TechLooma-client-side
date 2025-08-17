@@ -1,63 +1,189 @@
-import React from "react";
-import { Helmet } from "react-helmet-async";
+import React, { useState } from "react";
+import { Search, Star, Rocket, Users, Shield } from "lucide-react";
 
 const About = () => {
+  const [hoveredCard, setHoveredCard] = useState(null);
+
+  const features = [
+    {
+      icon: <Search className="w-8 h-8" />,
+      title: "Discover Innovation",
+      description:
+        "Explore cutting-edge tech products from diverse categories and stay ahead of the curve.",
+    },
+    {
+      icon: <Star className="w-8 h-8" />,
+      title: "Honest Reviews",
+      description:
+        "Read and write authentic reviews to help the community make informed decisions.",
+    },
+    {
+      icon: <Rocket className="w-8 h-8" />,
+      title: "Product Submissions",
+      description:
+        "Submit your own products and gain exposure to our tech-savvy audience.",
+    },
+    {
+      icon: <Users className="w-8 h-8" />,
+      title: "Tech Community",
+      description:
+        "Connect with passionate tech enthusiasts and industry professionals.",
+    },
+    {
+      icon: <Shield className="w-8 h-8" />,
+      title: "Secure Platform",
+      description:
+        "Enjoy a modern, secure, and user-friendly platform built for tech discovery.",
+    },
+  ];
+
   return (
-    <div className="w-10/12 mx-auto text-secondary-content space-y-8 py-10">
-      <Helmet>
-        <title>About Us | TechLooma</title>
-      </Helmet>
-      <div>
-        <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
-          About TechLooma
-        </h2>
-        <p className="text-lg leading-relaxed font-medium ">
-          <strong>TechLooma</strong> is your go-to platform for discovering,
-          reviewing, and sharing the latest tech products and innovations.
-          Whether you're a tech enthusiast, developer, or a consumer looking for
-          trusted insights — TechLooma connects you with cutting-edge tools and
-          communities.
-        </p>
-
-        <p className="text-base leading-relaxed mt-4">
-          Our platform empowers creators and users to submit products, leave
-          honest reviews, and engage with the tech community. From software
-          solutions to hardware gadgets, we cover a wide range of technology
-          designed to elevate your workflow and lifestyle.
-        </p>
-
-        <p className="text-base leading-relaxed mt-4">
-          At TechLooma, we believe technology drives progress. Our mission is to
-          provide a transparent, user-driven space that helps you discover tech
-          products that truly fit your needs.
-        </p>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <div className="relative overflow-hidden bg-gradient-to-r from-primary to-secondary text-white">
+        <div className="absolute inset-0 bg-black opacity-20"></div>
+        <div className="relative w-10/12 mx-auto py-20 text-center">
+          <div className=" px-4 py-2 bg-base-content rounded-full text-sm font-medium mb-6 backdrop-blur-sm flex items-center gap-2 w-fit mx-auto">
+            <Rocket className="w-4 h-4" />
+            Empowering Tech Discovery
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+            About TechLooma
+          </h1>
+          <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto leading-relaxed">
+            Your gateway to discovering, reviewing, and sharing the latest tech
+            innovations
+          </p>
+        </div>
       </div>
 
-      <div>
-        <h3 className="text-2xl font-semibold text-secondary mb-3">
-          Why Choose TechLooma?
-        </h3>
-        <ul className="space-y-2 pl-5 text-base list-disc ">
-          <li>
-            Discover and explore innovative tech products from diverse
-            categories
-          </li>
-          <li>
-            Read and write honest reviews to help the community make informed
-            choices
-          </li>
-          <li>
-            Submit your own products and gain exposure to a tech-savvy audience
-          </li>
-          <li>
-            Engage with a passionate community of tech enthusiasts and
-            professionals
-          </li>
-          <li>
-            Enjoy a modern, secure, and user-friendly platform tailored for tech
-            discovery
-          </li>
-        </ul>
+      {/* Main Content */}
+      <div className="max-w-screen-xl mx-auto py-16 space-y-16 text-secondary-content px-4 xl:px-0">
+        {/* Mission Section */}
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6">
+            <div className="inline-block px-3 py-1 bg-secondary text-secondary-content rounded-full text-sm font-medium">
+              Our Mission
+            </div>
+            <h2 className="text-4xl font-bold leading-tight">
+              Connecting You with
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                {" "}
+                Innovation
+              </span>
+            </h2>
+            <p className="text-lg leading-relaxed">
+              <strong className="text-secondary">TechLooma</strong> is your
+              trusted platform for discovering, reviewing, and sharing the
+              latest tech products and innovations. We bridge the gap between
+              cutting-edge technology and the people who need it most.
+            </p>
+            <p className="leading-relaxed">
+              Whether you're a developer seeking the perfect tool, an
+              entrepreneur looking for the next big solution, or a tech
+              enthusiast staying ahead of trends — TechLooma connects you with
+              the innovations that matter.
+            </p>
+          </div>
+
+          <div className="relative text-secondary-content">
+            <div className="p-6 sm:p-8 md:p-10 backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl ">
+              <div className="grid grid-cols-2 gap-4 text-center">
+                <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl p-4">
+                  <div className="text-2xl font-bold text-primary">10K+</div>
+                  <div className="text-sm">Tech Products</div>
+                </div>
+                <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl p-4 ">
+                  <div className="text-2xl font-bold text-secondary">25K+</div>
+                  <div className="text-sm">Reviews</div>
+                </div>
+                <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl p-4 ">
+                  <div className="text-2xl font-bold text-green-600">5K+</div>
+                  <div className="text-sm">Contributors</div>
+                </div>
+                <div className="backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl p-4 ">
+                  <div className="text-2xl font-bold text-orange-600">50+</div>
+                  <div className="text-sm">Categories</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Vision Section */}
+        <div className=" p-6 sm:p-8 md:p-10 backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl text-center text-secondary-content">
+          <div className="max-w-4xl mx-auto space-y-6">
+            <div className="inline-block px-3 py-1 bg-secondary text-secondary-content rounded-full text-sm font-medium">
+              Our Vision
+            </div>
+            <h3 className="text-3xl md:text-4xl font-bold ">
+              Technology That Transforms Lives
+            </h3>
+            <p className="text-lg leading-relaxed">
+              At TechLooma, we believe technology should be accessible,
+              transparent, and transformative. Our mission is to create a
+              user-driven ecosystem where innovation meets real-world needs,
+              helping you discover tech products that genuinely elevate your
+              workflow and lifestyle.
+            </p>
+          </div>
+        </div>
+
+        {/* Features Section */}
+        <div className="space-y-12 text-secondary-content">
+          <div className="text-center space-y-4">
+            <div className="inline-block px-3 py-1 bg-secondary text-secondary-content rounded-full text-sm font-medium">
+              Why Choose TechLooma?
+            </div>
+            <h3 className="text-3xl md:text-4xl font-bold">
+              Everything You Need in One Platform
+            </h3>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className={`group  p-6 sm:p-8 md:p-10 backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl transition-all duration-300 cursor-pointer ${
+                  hoveredCard === index
+                    ? "transform -translate-y-2"
+                    : "border-transparent"
+                }`}
+                onMouseEnter={() => setHoveredCard(index)}
+                onMouseLeave={() => setHoveredCard(null)}
+              >
+                <div className="text-secondary mb-4 transform group-hover:scale-105 transition-transform duration-300 group-hover:text-purple-600">
+                  {feature.icon}
+                </div>
+                <h4 className="text-xl font-bold mb-3 group-hover:text-secondary transition-colors">
+                  {feature.title}
+                </h4>
+                <p className="leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className=" p-6 sm:p-8 md:p-10 backdrop-blur-md bg-base-content/60 border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)] rounded-2xl text-center text-secondary-content">
+          <div className="max-w-3xl mx-auto space-y-6">
+            <h3 className="text-3xl md:text-4xl font-bold">
+              Ready to Explore the Future of Tech?
+            </h3>
+            <p className="text-lg opacity-90">
+              Join thousands of tech enthusiasts, developers, and innovators who
+              trust TechLooma to discover the tools that shape tomorrow.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+              <button className="bg-secondary text-secondary-content px-8 py-3 rounded-full font-semibold transition-colors transform hover:scale-105 cursor-pointer">
+                Start Exploring
+              </button>
+              <button className="border-2 px-8 py-3 rounded-full font-semibold hover:bg-secondary hover:text-secondary-content cursor-pointer transition-all transform hover:scale-105">
+                Submit Your Product
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

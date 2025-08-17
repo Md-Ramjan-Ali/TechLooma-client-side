@@ -143,7 +143,7 @@ const NewsletterSection = () => {
                       ) : (
                         <>
                           <Send className="w-5 h-5" />
-                          <span>Subscribe for Free</span>
+                          <span>Subscribe</span>
                         </>
                       )}
                     </button>
