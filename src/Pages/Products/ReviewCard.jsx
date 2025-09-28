@@ -32,9 +32,9 @@ const ReviewCard = ({ review }) => {
           <p className="line-clamp-2">
             {description}
           </p>
-          <p className="">
+          <div className="">
             <StarRating rating={parseInt(rating)} />
-          </p>
+          </div>
         </div>
       </div>
     </div>

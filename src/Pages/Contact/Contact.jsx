@@ -91,7 +91,7 @@ const Contact = () => {
                   <div className="bg-blue-100 rounded-full p-3">
                     <Mail className="w-6 h-6 text-blue-600" />
                   </div>
-                  <div>
+                  <div className="overflow-x-scroll">
                     <h4 className="font-semibold">Email Us</h4>
                     <p className="">ramjanbd1999@gmail.com</p>
                   </div>
@@ -103,7 +103,7 @@ const Contact = () => {
                   <div className="bg-green-100 rounded-full p-3">
                     <Phone className="w-6 h-6 text-green-600" />
                   </div>
-                  <div>
+                  <div className="overflow-x-scroll">
                     <h4 className="font-semibold ">Call Us</h4>
                     <p className="">+8801928-294516</p>
                   </div>
@@ -115,7 +115,7 @@ const Contact = () => {
                   <div className="bg-purple-100 rounded-full p-3">
                     <MapPin className="w-6 h-6 text-purple-600" />
                   </div>
-                  <div>
+                  <div className="overflow-x-scroll">
                     <h4 className="font-semibold ">Visit Us</h4>
                     <p className="">Dhaka, Bangladesh</p>
                   </div>
@@ -127,7 +127,7 @@ const Contact = () => {
                   <div className="bg-orange-100 rounded-full p-3">
                     <Clock className="w-6 h-6 text-orange-600" />
                   </div>
-                  <div>
+                  <div className="overflow-x-scroll">
                     <h4 className="font-semibold">Response Time</h4>
                     <p className="">Within 24 hours</p>
                   </div>

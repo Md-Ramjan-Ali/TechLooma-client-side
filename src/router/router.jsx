@@ -27,6 +27,7 @@ import Contact from "../Pages/Contact/Contact";
 import Terms from "../Pages/Terms/Terms";
 import Privacy from "../Pages/Privacy/Privacy";
 import UpcomingProducts from "../Pages/UpcomingProducts/UpcomingProducts";
+import Settings from "../Components/Setting/Setting";
 
 export const router = createBrowserRouter([
   {
@@ -146,6 +147,14 @@ export const router = createBrowserRouter([
             <ManageCoupons></ManageCoupons>
           </AdminRoute>
         ),
+      },
+      {
+        path:"contact",
+        Component:Contact,
+      },
+      {
+        path:"settings",
+        Component: Settings,
       },
     ],
   },

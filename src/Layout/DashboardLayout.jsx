@@ -3,10 +3,13 @@ import { NavLink, Outlet } from "react-router";
 import TechLoomaLogo from "../Components/TechLoomaLogo/TechLoomaLogo";
 import {
   FaChartPie,
+  FaCog,
   FaFlag,
   FaGavel,
   FaHome,
   FaPlus,
+  FaQuestionCircle,
+  FaSignOutAlt,
   FaThList,
   FaTicketAlt,
   FaUser,
@@ -16,9 +19,25 @@ import useUserRole from "../hooks/useUserRole";
 
 import "../Styles/dashboard.css";
 import { ToastContainer } from "react-toastify";
+import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const DashboardLayout = () => {
+  const { logOut } = useAuth();
   const { role, isLoading } = useUserRole();
+
+    const handleLogOut = () => {
+      logOut().then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Logout Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }).catch(error=>{
+        console.log(error);
+      });
+    };
   return (
     <div className="drawer lg:drawer-open ">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -136,9 +155,38 @@ const DashboardLayout = () => {
               </li>
             </>
           )}
+          {/* Common menu items for all roles */}
+          <div className="divider"></div>
+          {/* Settings */}
+          <li>
+            <NavLink to="/dashboard/settings">
+              <FaCog className="inline-block mr-2" />
+              Settings
+            </NavLink>
+          </li>
+
+          {/* Help & Support */}
+          <li>
+            <NavLink to="/dashboard/contact">
+              <FaQuestionCircle className="inline-block mr-2" />
+              Help & Support
+            </NavLink>
+          </li>
+
+          {/* Logout Button */}
+          <div className="divider"></div>
+          <li>
+            <button
+              onClick={handleLogOut}
+              className="text-error hover:bg-error/20"
+            >
+              <FaSignOutAlt className="inline-block mr-2" />
+              Logout
+            </button>
+          </li>
         </ul>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };

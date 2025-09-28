@@ -1,7 +1,8 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import useAuth from "./useAuth";
 import { useNavigate } from "react-router";
+import { getIdToken } from "firebase/auth";
 
 const axiosSecure = axios.create({
   baseURL: `https://tech-looma-server.vercel.app`,
@@ -11,42 +12,36 @@ const useAxiosSecure = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
 
-  // interceptor request
-  axiosSecure.interceptors.request.use(
-    (config) => {
-         const token = user?.accessToken;
-         if (token) {
-           config.headers.Authorization = `Bearer ${token}`;
-         }
-      // config.headers.Authorization = `Bearer ${user?.accessToken}`;
-      return config;
-    },
-    (error) => {
-      return Promise.reject(error);
-    }
-  );
+  useEffect(() => {
+    const requestInterceptor = axiosSecure.interceptors.request.use(
+      async (config) => {
+        if (user) {
+          const token = await getIdToken(user);
+          config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+      },
+      (error) => Promise.reject(error)
+    );
 
-  // interceptor response
-  axiosSecure.interceptors.response.use(
-    (response) => {
-      return response;
-    },
-    (error) => {
-      const status = error.response?.status;
-      if (status === 403) {
-        navigate("/forbidden");
-      } else if (status === 401) {
-        logOut()
-          .then(() => {
-            navigate("/auth/login");
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+    const responseInterceptor = axiosSecure.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        const status = error.response?.status;
+        if (status === 403) {
+          navigate("/forbidden");
+        } else if (status === 401) {
+          logOut().then(() => navigate("/auth/login"));
+        }
+        return Promise.reject(error);
       }
-      return Promise.reject(error);
-    }
-  );
+    );
+
+    return () => {
+      axiosSecure.interceptors.request.eject(requestInterceptor);
+      axiosSecure.interceptors.response.eject(responseInterceptor);
+    };
+  }, [user, logOut, navigate]);
 
   return axiosSecure;
 };
