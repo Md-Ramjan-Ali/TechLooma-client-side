@@ -82,7 +82,7 @@ const CouponCard = ({ coupons }) => {
                 {parseFloat(coupon.discount) * 100}% OFF
               </div>
 
-              <div className="p-6">
+              <div className="p-5">
                 {/* Coupon Header */}
                 <div className="flex justify-between items-start mb-4">
                   <div>
@@ -118,12 +118,12 @@ const CouponCard = ({ coupons }) => {
                 </div>
 
                 {/* Countdown & CTA */}
-                <div className="flex justify-between items-center mt-6">
-                  <div className="flex items-center text-sm">
+                <div className="flex justify-between items-center mt-6 gap-0.5">
+                  <div className="flex items-center text-xs md:text-sm">
                     <FiClock className="mr-1" />
                     <span>{timeLeft[coupon._id] || "Loading..."}</span>
                   </div>
-                  <button className="flex items-center gap-2 bg-secondary hover:bg-primary px-4 py-2 rounded-tl-2xl rounded-br-2xl transition-colors cursor-pointer">
+                  <button className="text-xs md:text-base flex items-center md:gap-2 bg-secondary hover:bg-primary px-4 py-2 rounded-tl-2xl rounded-br-2xl transition-colors cursor-pointer">
                     <FiUserPlus /> Subscribe Now
                   </button>
                 </div>

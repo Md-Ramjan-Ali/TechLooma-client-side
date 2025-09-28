@@ -39,7 +39,7 @@ const BehindTheScenes = () => {
         linkedin: "sarahchen",
         github: "sarahchen",
       },
-      funFact: "Drinks 6 cups of coffee daily and still codes at midnight! ☕",
+      funFact: "Drinks 6 cups of coffee daily and still codes at midnight!",
     },
     {
       id: 2,
@@ -56,7 +56,7 @@ const BehindTheScenes = () => {
         linkedin: "alexrodriguez",
         github: "alexrod",
       },
-      funFact: "Has a collection of 50+ mechanical keyboards! ⌨️",
+      funFact: "Has a collection of 50+ mechanical keyboards!",
     },
     {
       id: 3,
@@ -73,7 +73,7 @@ const BehindTheScenes = () => {
         linkedin: "emmawatson",
         github: "emmaw",
       },
-      funFact: "Sketches UI ideas on napkins during lunch breaks! 🎨",
+      funFact: "Sketches UI ideas on napkins during lunch breaks!",
     },
     {
       id: 4,
@@ -90,7 +90,7 @@ const BehindTheScenes = () => {
         linkedin: "davidkim",
         github: "davidk",
       },
-      funFact: "Speaks 5 languages and still learning sign language! 🤟",
+      funFact: "Speaks 5 languages and still learning sign language!",
     },
   ];
 

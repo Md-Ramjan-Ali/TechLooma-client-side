@@ -36,6 +36,9 @@ const Navbar = () => {
       <li>
         <NavLink to="/upcomingProducts">Upcoming Products</NavLink>
       </li>
+      {user && <li>
+        <NavLink to="/dashboard">Dashboard</NavLink>
+        </li>}
       <li>
         <NavLink to="/about">About Us</NavLink>
       </li>
@@ -110,13 +113,6 @@ const Navbar = () => {
                     transition={{ duration: 0.2 }}
                     className="absolute right-0 mt-2 w-44 bg-[#1a1a1a] rounded-lg border border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)]  z-50"
                   >
-                    <Link
-                      to="/dashboard"
-                      className="block px-4 py-2 border-b-1 border-primary/30 shadow-[0_0_20px_rgba(0,255,255,0.2)]  text-secondary-content transition"
-                      onClick={() => setIsDropdownOpen(false)}
-                    >
-                      Dashboard
-                    </Link>
                     <button
                       onClick={handleLogOut}
                       className="w-full text-left px-4 py-2 text-red-400 transition cursor-pointer"

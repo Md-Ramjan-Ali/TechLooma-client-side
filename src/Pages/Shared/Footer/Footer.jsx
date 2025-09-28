@@ -64,7 +64,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="relative z-10 space-y-6">
-            <h3 className="text-xl font-semibold text-white">Follow Us</h3>
+            <h3 className="text-xl font-semibold text-white">Contact Us</h3>
             <div className="space-y-5 text-gray-300">
               <div className="flex items-start gap-3">
                 <FaHome className="text-xl mt-1" />
@@ -83,16 +83,6 @@ const Footer = () => {
                 <FaPhone className="text-xl" />
                 <p>+88 01928-294516</p>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Line */}
-        <div className="  bg-[#071B2E]/95 border-t-1 border-primary/10 text-gray-500 mt-5 py-5 relative z-10">
-          <div className="max-w-screen-xl mx-auto flex justify-between items-center">
-            <div className="">
-              © {new Date().getFullYear()} TechLooma | A Tech Launch Platform.
-              All rights reserved.
             </div>
             <div className="flex gap-4 text-gray-300 text-lg">
               <a
@@ -127,6 +117,16 @@ const Footer = () => {
               >
                 <FaLinkedin />
               </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Line */}
+        <div className="  bg-[#071B2E]/95 border-t-1 border-primary/10 text-gray-500 mt-5 py-5 relative z-10">
+          <div className="max-w-screen-xl mx-auto text-center">
+            <div className="">
+              © {new Date().getFullYear()} TechLooma | A Tech Launch Platform.
+              All rights reserved.
             </div>
           </div>
         </div>
