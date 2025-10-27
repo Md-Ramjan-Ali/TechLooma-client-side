@@ -40,14 +40,12 @@ const Navbar = () => {
       <li>
         <NavLink to="/upcomingProducts">Upcoming Products</NavLink>
       </li>
-      {user && (
-        <li className="relative">
-          <div className="flex items-center gap-1 cursor-pointer group">
-            <NavLink to="/dashboard">Dashboard</NavLink>
-            <FaChevronDown className="group-hover:text-[#22d3ee] transition-transform duration-200 group-hover:rotate-180" />
-          </div>
-        </li>
-      )}
+      <li className="relative">
+        <div className="flex items-center gap-1 cursor-pointer group">
+          <NavLink to="/dashboard">Dashboard</NavLink>
+          <FaChevronDown className="group-hover:text-[#22d3ee] transition-transform duration-200 group-hover:rotate-180" />
+        </div>
+      </li>
       <li>
         <NavLink to="/about">About Us</NavLink>
       </li>
